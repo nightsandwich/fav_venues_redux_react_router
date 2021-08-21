@@ -41,6 +41,9 @@ img {
 .venue-info > * {
     background-color:rgb(255, 119, 8)
 }
+.notes{
+    background-color: yellow;
+}
 #navbar {
     min-height: 150px;
     width: 100%;

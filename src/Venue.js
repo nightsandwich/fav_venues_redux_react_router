@@ -11,11 +11,12 @@ const Venue = ({selectedVenue}) => {
                 <div>
                     <a href={selectedVenue.website}>{selectedVenue.website}</a>
                 </div>
-                <ul>
+                <ul >
+                    NOTES
                 {
                     selectedVenue.notes.map((note) => {
                         return (
-                            <li key={note.id}>{note.comment}</li>
+                            <li key={note.id} className='notes'>{note.comment}</li>
                         );
                     })
                 }

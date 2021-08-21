@@ -16,4 +16,26 @@ router.get('/neighborhoods', async(req, res, next)=> {
     }
     });
 
+    router.get('/neighborhoods/:id', async(req, res, next) => {
+        try{
+            const neighborhood = await (Neighborhood.findByPk(req.params.id, {
+                include: [
+                    {
+                        model: Venue,
+                    },
+                    {
+                        model: Type
+                    },
+                    {
+                        model: Note,
+                    }
+                ]
+            }));
+            res.send(neighborhood);
+        }
+        catch(ex){
+            next(ex);
+        }
+    })
+
 module.exports = router;

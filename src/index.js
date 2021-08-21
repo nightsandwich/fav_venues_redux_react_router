@@ -2,36 +2,50 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import axios from 'axios';
 
+import Venues from './Venues';
+import Venue from './Venue';
+import Navbar from './Navbar';
+
 class App extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       venues: [],
+      selectedVenue: {},
+     
     };
+    this.venueSelected = this.venueSelected.bind(this);
   }
   async componentDidMount(){
     this.setState({
       venues: (await axios.get('/api/venues')).data,
+      
     });
-
   }
+  
+  async venueSelected (venueId){
+    if (venueId !== ''){
+      const venue = (await axios.get(`/api/venues/${venueId}`)).data;
+      this.setState({selectedVenue: venue});
+    } else {
+      this.setState({selectedVenue: venueId});
+    }
+  }
+
   render(){
-    const { venues } = this.state;
+    const { venues, selectedVenue } = this.state;
+    const {venueSelected} = this;
     return (
+      <div id='main'>
+      {
+      <Navbar venueSelected={venueSelected} />
+      }
         <div>
-            <h2>BROOKLYN VENUES</h2>
-            <ul>
-                {
-                venues.map( venue => { 
-                    return (
-                    <li key={ venue.id }>
-                        { venue.name }
-                    </li>
-                    );
-                })
-                }
-            </ul>
+            {
+              selectedVenue.id ? <Venue selectedVenue={selectedVenue} /> : <Venues venues={venues} venueSelected={venueSelected} />
+            }
         </div>
+      </div>
     );
   }
 }

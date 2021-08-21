@@ -1,0 +1,55 @@
+* {
+    background-color:rgb(255, 8, 49)
+}
+div {
+    font-family: verdana;
+    text-align: center;
+}
+h1 {
+    text-align: center;
+    background-color: rgb(255, 8, 173);
+}
+a{
+    background-color:rgb(255, 119, 8)
+}
+
+#main{
+    display: flex;
+    flex-wrap: wrap;
+}
+p {
+    margin: 0;
+}
+.venues-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+img {
+    max-height: 400px;
+    max-width: 400px;
+}
+.venue-details {
+    align-self: center;
+}
+.venue-info {
+    border: 3px solid black;
+    margin: 1em;
+    padding: 1em;
+    background-color:rgb(255, 119, 8);
+}
+.venue-info > * {
+    background-color:rgb(255, 119, 8)
+}
+#navbar {
+    min-height: 150px;
+    width: 100%;
+    background-color: rgb(255, 8, 173);
+    display: flex;
+    align-content: space-around;  
+  }
+  
+   
+  #navbar a:hover {
+    background-color: dodgerblue;
+  }

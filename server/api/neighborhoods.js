@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const {Venue, Neighborhood, Type, Note} = require('../db');
 
-router.get('/', async(req, res, next)=> {
+router.get('/neighborhoods', async(req, res, next)=> {
     try {
         res.send(await Neighborhood.findAll({
             include: [

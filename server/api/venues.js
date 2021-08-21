@@ -2,7 +2,7 @@
 const router = require('express').Router();
 const {Venue, Neighborhood, Type, Note} = require('../db');
 
-router.get('/', async(req, res, next)=> {
+router.get('/venues', async(req, res, next)=> {
     try {
       res.send(await Venue.findAll({
           include: [
@@ -23,7 +23,7 @@ router.get('/', async(req, res, next)=> {
     }
   });
   
-router.get('/:id', async(req, res, next) => {
+router.get('/venues/:id', async(req, res, next) => {
       try{
           const venue = await (Venue.findByPk(req.params.id, {
               include: [

@@ -4,7 +4,7 @@ const Venues = ({venues, venueSelected}) => {
     return (
         <div >
             <h1>FAVORITE BROOKLYN ESTABLISHMENTS</h1>
-            <div className='venues-container'>
+            <div id='venues-container'>
                 {
                 venues.map( venue => { 
                     return (

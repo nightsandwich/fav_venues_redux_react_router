@@ -4,8 +4,9 @@ import axios from 'axios';
 import Venues from './Venues';
 import Venue from './Venue';
 import Navbar from './Navbar';
-import Neighborhoods from './Neighborhoods';
-import { Note } from '../server/db';
+//import Neighborhoods from './Neighborhoods';
+import Footer from './Footer';
+
 
 class App extends Component{
   constructor(props){
@@ -54,19 +55,22 @@ class App extends Component{
     const { venues, selectedVenue, neighborhoods, selectedNeighborhood } = this.state;
     const {venueSelected, neighborhoodSelected, deleteNote } = this;
     return (
-      <div id='main'>
-      {
-      <Navbar venueSelected={venueSelected} />
-      }
-        <div>
+      <div id='main-container'>
+        {
+        <Navbar venueSelected={venueSelected} />
+        }
+        <div id='second-container'>
             {
               selectedVenue.id ? <Venue selectedVenue={selectedVenue} deleteNote={deleteNote} /> : <Venues venues={venues} venueSelected={venueSelected} />
             }
-        </div>
-        <div>
-            {
-              selectedNeighborhood.id ? <Neighborhood selectedNeighborhood={selectedNeighborhood} /> : <Neighborhoods neighborhoods={neighborhoods} neighborhoodSelected={neighborhoodSelected} />
-            }
+          <div id='footer'>
+              {
+                <div>
+                <Footer />
+              
+                </div>
+              }
+          </div>
         </div>
       </div>
     );

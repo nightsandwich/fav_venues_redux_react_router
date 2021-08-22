@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Venue = ({selectedVenue}) => {
+const Venue = ({selectedVenue, deleteNote}) => {
     return (
         <div>
             <div className='venue-info venue-details'>
@@ -16,11 +16,12 @@ const Venue = ({selectedVenue}) => {
                 {
                     selectedVenue.notes.map((note) => {
                         return (
-                            <li key={note.id} className='notes'>{note.comment}</li>
+                            <li key={note.id} className='notes'>{note.comment} <button onClick={() => deleteNote(note)}>X</button></li>
                         );
                     })
                 }
                 </ul>
+                <input></input><button>Add Note</button>
             </div>
           </div>
     );

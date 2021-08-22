@@ -5,6 +5,7 @@ import Venues from './Venues';
 import Venue from './Venue';
 import Navbar from './Navbar';
 import Neighborhoods from './Neighborhoods';
+import { Note } from '../server/db';
 
 class App extends Component{
   constructor(props){
@@ -13,10 +14,12 @@ class App extends Component{
       venues: [],
       selectedVenue: {},
       neighborhoods: [],
-      selectedNeighborhood: {}
+      selectedNeighborhood: {},
+      notes: []
     };
     this.venueSelected = this.venueSelected.bind(this);
     this.neighborhoodSelected = this.neighborhoodSelected.bind(this);
+    this.deleteNote = this.deleteNote.bind(this);
   }
   async componentDidMount(){
     this.setState({
@@ -28,21 +31,28 @@ class App extends Component{
     if (venueId !== ''){
       const venue = (await axios.get(`/api/venues/${venueId}`)).data;
       this.setState({selectedVenue: venue});
+      this.setState({notes: venue.notes});
     } else {
       this.setState({selectedVenue: venueId});
     }
   }
   async neighborhoodSelected (neighborhoodId){
     if (neighborhoodId !== ''){
-      const neighborhood = (await axios.get(`/api/neighborhood/${neighborhoodId}`)).data;
+      const neighborhood = (await axios.get(`/api/neighborhoods/${neighborhoodId}`)).data;
       this.setState({selectedNeighborhood: neighborhood});
     } else {
       this.setState({selectedNeighborhood: neighborhoodId});
     }
   }
+  async deleteNote(noteId){
+    const note = (await axios.get(`/api/notes/${noteId}`)).data;
+    await axios.delete(`/api/notes/${note.id}`);
+    const notes = this.state.notes.filter(i => i.id !== note.id);
+    this.setState({notes});
+  }
   render(){
     const { venues, selectedVenue, neighborhoods, selectedNeighborhood } = this.state;
-    const {venueSelected, neighborhoodSelected} = this;
+    const {venueSelected, neighborhoodSelected, deleteNote } = this;
     return (
       <div id='main'>
       {
@@ -50,7 +60,7 @@ class App extends Component{
       }
         <div>
             {
-              selectedVenue.id ? <Venue selectedVenue={selectedVenue} /> : <Venues venues={venues} venueSelected={venueSelected} />
+              selectedVenue.id ? <Venue selectedVenue={selectedVenue} deleteNote={deleteNote} /> : <Venues venues={venues} venueSelected={venueSelected} />
             }
         </div>
         <div>

@@ -7,7 +7,7 @@
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
     "start:dev": "npm run build:dev & nodemon server --ignore dist/ --ignore src/",
-    "start-server": "nodemon --watch server -e js,html server/main.js"
+    "start-server": "npm run build:dev & nodemon --watch server -e js,html server/main.js"
   },
   "keywords": [],
   "author": "",

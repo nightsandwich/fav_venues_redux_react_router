@@ -16,7 +16,7 @@ const Venue = ({selectedVenue, deleteNote}) => {
                 {
                     selectedVenue.notes.map((note) => {
                         return (
-                            <li key={note.id} className='notes'>{note.comment} <button onClick={() => deleteNote(note)}>X</button></li>
+                            <li key={note.id} className='notes'>{note.comment} <button onClick={() => deleteNote(note.id)}>X</button></li>
                         );
                     })
                 }

@@ -46,9 +46,9 @@ class App extends Component{
     }
   }
   async deleteNote(noteId){
-    const note = (await axios.get(`/api/notes/${noteId}`)).data;
-    await axios.delete(`/api/notes/${note.id}`);
-    const notes = this.state.notes.filter(i => i.id !== note.id);
+    //const note = (await axios.get(`/api/notes/${noteId}`)).data;
+    //await axios.delete(`/api/notes/${note.id}`);
+    const notes = this.state.notes.filter(i => i.id !== noteId);
     this.setState({notes});
   }
   render(){

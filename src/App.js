@@ -65,10 +65,9 @@ class App extends Component{
             }
           <div id='footer'>
               {
-                <div>
+              
                 <Footer />
               
-                </div>
               }
           </div>
         </div>

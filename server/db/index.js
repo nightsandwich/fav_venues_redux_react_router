@@ -7,6 +7,9 @@ const {Note} = require('./Note');
 Venue.belongsTo(Type);
 Type.hasMany(Venue);
 
+//Type.hasMany(Neighborhood);
+//Neighborhood.hasMany(Type);
+
 Venue.belongsTo(Neighborhood);
 Neighborhood.hasMany(Venue);
 

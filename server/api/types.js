@@ -10,6 +10,26 @@ router.get('/types', async(req, res, next)=> {
       next(ex);
     }
   });
-
+  router.get('/types/:id', async(req, res, next) => {
+    try{
+        const type = await (Type.findByPk(req.params.id, {
+            include: [
+                {
+                    model: Neighborhood,
+                },
+                {
+                    model: Type
+                },
+                {
+                    model: Note,
+                }
+            ]
+        }));
+        res.send(venue);
+    }
+    catch(ex){
+        next(ex);
+    }
+})
 
 module.exports = router;

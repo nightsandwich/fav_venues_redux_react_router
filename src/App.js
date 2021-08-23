@@ -6,7 +6,7 @@ import Venue from './Venue';
 import Navbar from './Navbar';
 //import Neighborhoods from './Neighborhoods';
 import Footer from './Footer';
-
+import Types from './Types';
 
 class App extends Component{
   constructor(props){
@@ -16,16 +16,21 @@ class App extends Component{
       selectedVenue: {},
       neighborhoods: [],
       selectedNeighborhood: {},
-      notes: []
+      notes: [],
+      types: [],
+      selectedType: {},
     };
+
     this.venueSelected = this.venueSelected.bind(this);
     this.neighborhoodSelected = this.neighborhoodSelected.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
+    this.typeSelected = this.typeSelected.bind(this);
   }
   async componentDidMount(){
     this.setState({
       venues: (await axios.get('/api/venues')).data,
-      neighborhoods: (await axios.get('/api/neighborhoods')).data
+      neighborhoods: (await axios.get('/api/neighborhoods')).data,
+      types: (await axios.get('/api/types')).data
     });
   }
   async venueSelected (venueId){
@@ -45,6 +50,14 @@ class App extends Component{
       this.setState({selectedNeighborhood: neighborhoodId});
     }
   }
+  async typeSelected (typeId){
+    if (typeId !== ''){
+      const type = (await axios.get(`/api/types/${typeId}`)).data;
+      this.setState({selectedType: type});
+    } else {
+      this.setState({selectedType: typeId});
+    }
+  }
   async deleteNote(noteId){
     //const note = (await axios.get(`/api/notes/${noteId}`)).data;
     //await axios.delete(`/api/notes/${note.id}`);
@@ -52,8 +65,8 @@ class App extends Component{
     this.setState({notes});
   }
   render(){
-    const { venues, selectedVenue, neighborhoods, selectedNeighborhood } = this.state;
-    const {venueSelected, neighborhoodSelected, deleteNote } = this;
+    const { venues, selectedVenue, neighborhoods, selectedNeighborhood, types, selectedType } = this.state;
+    const {venueSelected, neighborhoodSelected, typeSelected, deleteNote } = this;
     return (
       <div id='main-container'>
         {
@@ -66,7 +79,7 @@ class App extends Component{
           <div id='footer'>
               {
               
-                <Footer />
+                <Footer neighborhoods={neighborhoods} types={types}/>
               
               }
           </div>

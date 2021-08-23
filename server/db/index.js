@@ -34,6 +34,7 @@ const syncAndSeed = async()=> {
     const metrorock = await Venue.create({name: 'Metrorock', imageUrl: 'https://cdn.shortpixel.ai/spai/w_1082+q_lossy+ret_img+to_webp/https://bushwickdaily.com/wp-content/uploads/2021/04/N_moyr-yYhYbnzg5_PLs4Q-1024x768.jpg', website: 'https://www.metrorock.com/bushwick', typeId: activity.id, neighborhoodId: bushwick.id});
     const chezoskar = await Venue.create({name: 'Chez Oskar', imageUrl: 'https://media-cdn.tripadvisor.com/media/photo-s/01/78/26/bb/front-street-view.jpg', website: 'http://www.chezoskar.com/', typeId: restaurant.id, neighborhoodId: bedstuy.id});
     const reliq =await Venue.create({name: 'The City Reliquary', imageUrl: 'https://i1.wp.com/www.cityreliquary.org/wp-content/uploads/2009/07/CR.jpg', website: 'https://www.cityreliquary.org/', typeId: museum.id, neighborhoodId: wburg.id}); 
+    const goldenyears = await Venue.create({name: 'Golden Years', imageUrl: 'https://s3-media0.fl.yelpcdn.com/bphoto/TG42_mjKbvXqUwHCSfsrjw/o.jpg', website: 'https://goldenyearsbk.com/', typeId: bar.id, neighborhoodId: wburg.id});
 
     const banterNote1 = await Note.create({comment: 'foosball on Thursday nights', venueId: banter.id});
     const formaNote1 = await Note.create({comment: 'cheap pasta', venueId: forma.id});

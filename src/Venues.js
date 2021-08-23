@@ -9,18 +9,20 @@ const Venues = ({venues, venueSelected}) => {
                 venues.map( venue => { 
                     return (
                     <div key={ venue.id } className='venue-info'>
-                        <h3><a onClick={() => venueSelected(venue.id)}>
-                            { venue.name }
-                        </a></h3>
-                        <p>Category: {venue.type.name}</p>
-                        <p>Neighborhood: {venue.neighborhood.name}</p>
+                        <h3>
+                            <a onClick={() => venueSelected(venue.id)}>
+                                { venue.name }
+                            </a>
+                        </h3>
                         <div>
                         <a onClick={() => venueSelected(venue.id)}> 
                             <img src={ venue.imageUrl}></img>
                         </a>
                         </div>
-                        <div>
-                            {venue.notes.length} {venue.notes.length === 1 ? 'Note' : 'Notes'} 
+                        <div className='website'>
+                            <a href ={venue.website}>
+                                Website
+                            </a>
                         </div>
                     </div>
                     );

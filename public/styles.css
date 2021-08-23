@@ -55,6 +55,15 @@ img {
 .notes{
     background-color: yellow;
 }
+.website a {
+    color: orange;
+    text-decoration: none;
+}
+.website a:hover{
+    background-color: dodgerblue;
+    color: yellow;
+    border: 1px solid black;
+}
 #navbar {
     border: 1px solid black;
     background-color: rgb(255, 8, 173);

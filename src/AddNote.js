@@ -4,10 +4,12 @@ import axios from 'axios';
 const AddNote = ({addNote, selectedVenue}) => {
     return (
         <div>
-            <form method='POST'>
-                    <input type='text' name="comment"/>
-                    <input onClick = {()=>addNote(selectedVenue.id, req.body)} type="submit" value="Add Note"/>
+        {
+            <form method='POST' action={`/api/venues/${selectedVenue.id}/notes`}>
+                <input type='text' name="comment" />
+                <input onClick = {()=>addNote(selectedVenue.id, comment)} type="submit" value="Add Note"/>
             </form>    
+        }
         </div>
     );
 };

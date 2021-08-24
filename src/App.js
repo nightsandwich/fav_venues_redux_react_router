@@ -75,6 +75,7 @@ class App extends Component{
   }
   async addNote(venueId, note){
     try{
+      //console.log(note);
       //const note = {id, comment, venueId};
       await axios.post(`/api/venues/${venueId}/notes`, note);
       const notes = this.state.notes.push(note);

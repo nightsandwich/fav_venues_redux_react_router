@@ -62,7 +62,8 @@ router.get('/:id', async(req, res, next) => {
 })
 router.post('/:id/notes', async(req, res, next)=> {
     try {
-      res.status(201).send(await Note.create({ venueId: req.params.id, comments: req.body.comments}));
+        //console.log(req.body);
+      res.status(201).send(await Note.create({ venueId: req.params.id, comment: req.body.comment}));
     }
     catch(ex){
       next(ex);

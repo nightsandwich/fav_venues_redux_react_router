@@ -13,10 +13,6 @@ const Venue = db.define('venue', {
     website: {
       type: STRING,
       defaultValue: 'https://www.yelp.com/'//need to insert
-    },
-    description: {
-      type: TEXT,
-      defaultValue: 'This is a place.'
     }
 });
 

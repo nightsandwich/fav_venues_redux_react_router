@@ -5,8 +5,10 @@ import axios from 'axios';
 //import Venue from './Venue';
 import Navbar from './Navbar';
 //import Neighborhoods from './Neighborhoods';
-import Footer from './Footer';
+import InsertNew from './InsertNew';
 import VenueView from './VenueView';
+import Footer from './Footer';
+import Header from './Header';
 //import Types from './Types';
 //import AddNote from './AddNote';
 import NeighborhoodView from './NeighborhoodView';
@@ -108,24 +110,24 @@ class App extends Component{
     const {venueSelected, neighborhoodSelected, typeSelected, deleteNote, addNote } = this;
     return (
       <div id='main-container'>
+        <div id='header'>
+              {
+                <Header />
+              }
+        </div>
         <div id='navbar'>
         {
         <Navbar venueSelected={venueSelected} venueView={venueView} neighborhoodView={neighborhoodView} />
         }
         </div>
-        <div id='venues-container'>
+          <>
             {
-              venueView ? <VenueView selectedVenue={selectedVenue} deleteNote={deleteNote} venues={venues} venueSelected={venueSelected}/> : <NeighborhoodView neighborhoods={neighborhoods} neighborhoodSelected={neighborhoodSelected} selectedNeighborhood={selectedNeighborhood} venueSelected={venueSelected}/>
+              venueView ? <VenueView selectedVenue={selectedVenue} deleteNote={deleteNote} venues={venues} venueSelected={venueSelected} neighborhoods={neighborhoods} types={types}/> : <NeighborhoodView neighborhoods={neighborhoods} neighborhoodSelected={neighborhoodSelected} selectedNeighborhood={selectedNeighborhood} venueSelected={venueSelected}/>
             }
-        </div>
+          </>
         <div id='footer'>
               {
-                <Footer neighborhoods={neighborhoods} types={types}/>
-              }
-        </div>
-        <div id='real-footer'>
-              {
-               
+                <Footer />
               }
         </div>
       </div>

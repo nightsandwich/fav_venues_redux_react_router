@@ -2,7 +2,7 @@ import React from 'react';
 
 const Neighborhoods = ({neighborhoods, neighborhoodSelected}) => {
     return (
-        <div >
+        <>
             <h1>BROOKLYN NEIGHBORHOODS</h1>
             <div >
                 {
@@ -20,7 +20,7 @@ const Neighborhoods = ({neighborhoods, neighborhoodSelected}) => {
                 })
                 }
             </div>
-        </div>
+        </>
     );
 }
 

@@ -3,7 +3,7 @@ import AddNote from './AddNote';
 
 const Venue = ({selectedVenue, deleteNote, addNote}) => {
     return (
-        <div>
+        <div id='venue'>
             <div className='venue-info venue-details'>
                 <h3>{selectedVenue.name}</h3>
                 <p>Category: {selectedVenue.type.name}</p>

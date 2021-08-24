@@ -1,5 +1,5 @@
 const {db} = require('./db');
-const {STRING} = db.Sequelize;
+const {STRING, TEXT} = db.Sequelize;
 
 const Venue = db.define('venue', {
     name: {
@@ -12,7 +12,11 @@ const Venue = db.define('venue', {
     },
     website: {
       type: STRING,
-      defaultValue: ''//need to insert
+      defaultValue: 'https://www.yelp.com/'//need to insert
+    },
+    description: {
+      type: TEXT,
+      defaultValue: 'This is a place.'
     }
 });
 

@@ -2,7 +2,7 @@
 const router = require('express').Router();
 const {Venue, Neighborhood, Type, Note} = require('../db');
 
-router.get('/venues', async(req, res, next)=> {
+router.get('/', async(req, res, next)=> {
     try {
       res.send(await Venue.findAll({
           include: [
@@ -23,7 +23,7 @@ router.get('/venues', async(req, res, next)=> {
     }
   });
   
-router.get('/venues/:id', async(req, res, next) => {
+router.get('/:id', async(req, res, next) => {
       try{
           const venue = await (Venue.findByPk(req.params.id, {
               include: [
@@ -44,5 +44,30 @@ router.get('/venues/:id', async(req, res, next) => {
           next(ex);
       }
   })
+
+  router.get('/:id/notes', async(req, res, next) => {
+    try{
+        const venue = await (Venue.findByPk(req.params.id, {
+            include: [
+                {
+                    model: Note,
+                }
+            ]
+        }));
+        res.send(venue);
+    }
+    catch(ex){
+        next(ex);
+    }
+})
+router.post('/:id/notes', async(req, res, next)=> {
+    try {
+      res.status(201).send(await Note.create({ venueId: req.params.id, comments: req.body.comments}));
+    }
+    catch(ex){
+      next(ex);
+    }
+  });
+
   
   module.exports = router;

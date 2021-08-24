@@ -3,8 +3,8 @@ import React from 'react';
 const Venues = ({venues, venueSelected}) => {
     return (
         <div >
-            <h1>FAVORITE BROOKLYN ESTABLISHMENTS</h1>
-            <div id='venues-container'>
+            <h1>FAVORITE SPOTS IN BROOKLYN</h1>
+            <div id='venue-flex'>
                 {
                 venues.map( venue => { 
                     return (
@@ -23,6 +23,7 @@ const Venues = ({venues, venueSelected}) => {
                             <a href ={venue.website}>
                                 Website
                             </a>
+                            <p>{venue.description}</p>
                         </div>
                     </div>
                     );

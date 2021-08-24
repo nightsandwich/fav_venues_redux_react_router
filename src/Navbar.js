@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navbar = ({venueSelected, neighborhoodSelected}) => {
     return (
-    <div id='navbar'>
+    <>
         <a>
             <div className='nav' onClick={()=>venueSelected('')}>
                 ALL VENUES
@@ -18,7 +18,7 @@ const Navbar = ({venueSelected, neighborhoodSelected}) => {
                 ALL CATEGORIES
             </div> 
         </a>
-    </div>
+    </>
     )
 }
 

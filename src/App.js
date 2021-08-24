@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 //import Neighborhoods from './Neighborhoods';
 import Footer from './Footer';
 import Types from './Types';
+import AddNote from './AddNote';
 
 class App extends Component{
   constructor(props){
@@ -19,12 +20,14 @@ class App extends Component{
       notes: [],
       types: [],
       selectedType: {},
+//make a VenueView and NeighborhoodView      neighborhoodView: false,
     };
 
     this.venueSelected = this.venueSelected.bind(this);
     this.neighborhoodSelected = this.neighborhoodSelected.bind(this);
     this.deleteNote = this.deleteNote.bind(this);
     this.typeSelected = this.typeSelected.bind(this);
+    this.addNote = this.addNote.bind(this);
   }
   async componentDidMount(){
     this.setState({
@@ -61,28 +64,45 @@ class App extends Component{
   async deleteNote(noteId){
     //const note = (await axios.get(`/api/notes/${noteId}`)).data;
     //await axios.delete(`/api/notes/${note.id}`);
-    const notes = this.state.notes.filter(i => i.id !== noteId);
-    this.setState({notes});
+    try{
+      await axios.delete(`/api/notes/${noteId}`);
+      const notes = this.state.notes.filter(i => i.id !== noteId);
+      this.setState({notes});
+    }
+    catch(ex){
+      console.log(ex)
+    }
+  }
+  async addNote(venueId, note){
+    try{
+      //const note = {id, comment, venueId};
+      await axios.post(`/api/venues/${venueId}/notes`, note);
+      const notes = this.state.notes.push(note);
+      this.setState({notes});
+    }
+    catch(ex){
+      console.log(ex)
+    }
   }
   render(){
     const { venues, selectedVenue, neighborhoods, selectedNeighborhood, types, selectedType } = this.state;
-    const {venueSelected, neighborhoodSelected, typeSelected, deleteNote } = this;
+    const {venueSelected, neighborhoodSelected, typeSelected, deleteNote, addNote } = this;
     return (
       <div id='main-container'>
+        <div id='navbar'>
         {
         <Navbar venueSelected={venueSelected} />
         }
-        <div id='second-container'>
+        </div>
+        <div id='venues-container'>
             {
-              selectedVenue.id ? <Venue selectedVenue={selectedVenue} deleteNote={deleteNote} /> : <Venues venues={venues} venueSelected={venueSelected} />
+              selectedVenue.id ? <Venue addNote={addNote} selectedVenue={selectedVenue} deleteNote={deleteNote} /> : <Venues venues={venues} venueSelected={venueSelected} />
             }
-          <div id='footer'>
+        </div>
+        <div id='footer'>
               {
-              
                 <Footer neighborhoods={neighborhoods} types={types}/>
-              
               }
-          </div>
         </div>
       </div>
     );

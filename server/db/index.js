@@ -6,9 +6,15 @@ const {Note} = require('./Note');
 
 Venue.belongsTo(Type);
 Type.hasMany(Venue);
-
-//Type.hasMany(Neighborhood);
-//Neighborhood.hasMany(Type);
+/*
+Type.belongsToMany(Neighborhood, {
+  through: 'NeighborhoodType'
+});
+Neighborhood.belongsToMany(Type, {
+  through: 'NeighborhoodType'
+});
+*/
+//need to specify a through table
 
 Venue.belongsTo(Neighborhood);
 Neighborhood.hasMany(Venue);

@@ -1,6 +1,7 @@
 import React from 'react';
+import AddNote from './AddNote';
 
-const Venue = ({selectedVenue, deleteNote}) => {
+const Venue = ({selectedVenue, deleteNote, addNote}) => {
     return (
         <div>
             <div className='venue-info venue-details'>
@@ -21,7 +22,7 @@ const Venue = ({selectedVenue, deleteNote}) => {
                     })
                 }
                 </ul>
-                <input></input><button>Add Note</button>
+                <AddNote selectedVenue={selectedVenue} addNote={addNote}/>
             </div>
           </div>
     );

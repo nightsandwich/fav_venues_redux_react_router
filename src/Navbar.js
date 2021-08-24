@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Navbar = ({venueSelected, neighborhoodSelected}) => {
     return (
     <>
@@ -9,7 +10,7 @@ const Navbar = ({venueSelected, neighborhoodSelected}) => {
             </div> 
         </a>
         <a>
-            <div className='nav' onClick={()=>venueSelected('')}>
+            <div className='nav' onClick={()=>neighborhoodSelected('')}>
                 ALL NEIGHBORHOODS
             </div> 
         </a>

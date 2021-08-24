@@ -1,9 +1,8 @@
 import React from 'react';
-import Venue from '.Venue';
-import Venues from '.Venues';
-import {selectedVenue, deleteNote, venues, venueSelected} from './App';
+import Venue from './Venue';
+import Venues from './Venues';
 
-const VenueView = () => {
+const VenueView = ({selectedVenue, deleteNote, venues, venueSelected}) => {
     return (
         <>
         {

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import Venues from './Venues';
-import Venue from './Venue';
+//import Venues from './Venues';
+//import Venue from './Venue';
 import Navbar from './Navbar';
 //import Neighborhoods from './Neighborhoods';
 import Footer from './Footer';
-import Types from './Types';
-import AddNote from './AddNote';
+import VenueView from './VenueView';
+//import Types from './Types';
+//import AddNote from './AddNote';
+import NeighborhoodView from './NeighborhoodView';
 
 class App extends Component{
   constructor(props){
@@ -20,6 +22,8 @@ class App extends Component{
       notes: [],
       types: [],
       selectedType: {},
+      venueView: true,
+      neighborhoodView: false,
 //make a VenueView and NeighborhoodView      neighborhoodView: false,
     };
 
@@ -39,20 +43,36 @@ class App extends Component{
   async venueSelected (venueId){
     if (venueId !== ''){
       const venue = (await axios.get(`/api/venues/${venueId}`)).data;
-      this.setState({selectedVenue: venue});
-      this.setState({notes: venue.notes});
+      this.setState({
+        selectedVenue: venue,
+        notes: venue.notes,
+        venueView: true,
+        neighborhoodView: false,
+      });
     } else {
-      this.setState({selectedVenue: venueId});
+      this.setState({
+        selectedVenue: venueId,
+        venueView: true,
+        neighborhoodView: false,
+      });
     }
-  }
+  };
   async neighborhoodSelected (neighborhoodId){
     if (neighborhoodId !== ''){
       const neighborhood = (await axios.get(`/api/neighborhoods/${neighborhoodId}`)).data;
-      this.setState({selectedNeighborhood: neighborhood});
+      this.setState({
+        selectedNeighborhood: neighborhood,
+        venueView: false,
+        neighborhoodView: true,
+      });
     } else {
-      this.setState({selectedNeighborhood: neighborhoodId});
+      this.setState({
+        selectedNeighborhood: neighborhoodId,
+        venueView: false,
+        neighborhoodView: true,
+      });
     }
-  }
+  };
   async typeSelected (typeId){
     if (typeId !== ''){
       const type = (await axios.get(`/api/types/${typeId}`)).data;
@@ -84,18 +104,18 @@ class App extends Component{
     }
   }
   render(){
-    const { venues, selectedVenue, neighborhoods, selectedNeighborhood, types, selectedType } = this.state;
+    const { venues, selectedVenue, neighborhoods, selectedNeighborhood, types, selectedType, venueView, neighborhoodView } = this.state;
     const {venueSelected, neighborhoodSelected, typeSelected, deleteNote, addNote } = this;
     return (
       <div id='main-container'>
         <div id='navbar'>
         {
-        <Navbar venueSelected={venueSelected} />
+        <Navbar venueSelected={venueSelected} venueView={venueView} neighborhoodView={neighborhoodView} />
         }
         </div>
         <div id='venues-container'>
             {
-              selectedVenue.id ? <Venue addNote={addNote} selectedVenue={selectedVenue} deleteNote={deleteNote} /> : <Venues venues={venues} venueSelected={venueSelected} />
+              venueView ? <VenueView selectedVenue={selectedVenue} deleteNote={deleteNote} venues={venues} venueSelected={venueSelected}/> : <NeighborhoodView neighborhoods={neighborhoods} neighborhoodSelected={neighborhoodSelected} selectedNeighborhood={selectedNeighborhood} venueSelected={venueSelected}/>
             }
         </div>
         <div id='footer'>

@@ -62,12 +62,10 @@ class App extends Component{
     }
   }
   async deleteNote(noteId){
-    //const note = (await axios.get(`/api/notes/${noteId}`)).data;
-    //await axios.delete(`/api/notes/${note.id}`);
     try{
       await axios.delete(`/api/notes/${noteId}`);
-      const notes = this.state.notes.filter(i => i.id !== noteId);
-      this.setState({notes});
+      //const notes = this.state.notes.filter(i => i.id !== noteId);
+      this.setState(this.state.notes.filter(i => i.id !== noteId));
     }
     catch(ex){
       console.log(ex)
@@ -78,8 +76,8 @@ class App extends Component{
       //console.log(note);
       //const note = {id, comment, venueId};
       await axios.post(`/api/venues/${venueId}/notes`, note);
-      const notes = this.state.notes.push(note);
-      this.setState({notes});
+      //const notes = this.state.notes.push(note);
+      this.setState(this.state.notes.push(note));
     }
     catch(ex){
       console.log(ex)
@@ -103,6 +101,11 @@ class App extends Component{
         <div id='footer'>
               {
                 <Footer neighborhoods={neighborhoods} types={types}/>
+              }
+        </div>
+        <div id='real-footer'>
+              {
+               
               }
         </div>
       </div>

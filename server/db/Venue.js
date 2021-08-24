@@ -1,5 +1,5 @@
 const {db} = require('./db');
-const {STRING, TEXT} = db.Sequelize;
+const {STRING } = db.Sequelize;
 
 const Venue = db.define('venue', {
     name: {

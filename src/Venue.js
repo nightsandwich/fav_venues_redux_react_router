@@ -4,13 +4,15 @@ import AddNote from './AddNote';
 const Venue = ({selectedVenue, deleteNote, addNote}) => {
     return (
         <div id='venue'>
-            <div className='venue-info venue-details'>
-                <h3>{selectedVenue.name}</h3>
-                <p>Category: {selectedVenue.type.name}</p>
-                <p>Neighborhood: {selectedVenue.neighborhood.name}</p>
-                <img src={selectedVenue.imageUrl} />
-                <div>
-                    <a href={selectedVenue.website}>{selectedVenue.website}</a>
+            <div className='venue-details'>
+                <div className='details'>
+                    <h3>{selectedVenue.name}</h3>
+                    <p>Category: {selectedVenue.type.name}</p>
+                    <p>Neighborhood: {selectedVenue.neighborhood.name}</p>
+                    <img src={selectedVenue.imageUrl} />
+                    <div>
+                        <a href={selectedVenue.website}>{selectedVenue.website}</a>
+                    </div>
                 </div>
                 <ul >
                     NOTES

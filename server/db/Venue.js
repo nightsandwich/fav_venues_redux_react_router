@@ -8,7 +8,7 @@ const Venue = db.define('venue', {
     },
     imageUrl: {
       type: STRING,
-      defaultValue: 'default-image.jpg' //need to add this to public folder
+      defaultValue: 'https://ontheworldmap.com/usa/city/new-york-city/map-of-brooklyn-neighborhoods-max.jpg'
     },
     website: {
       type: STRING,

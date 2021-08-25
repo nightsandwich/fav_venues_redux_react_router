@@ -109,7 +109,7 @@ class App extends Component{
       console.log(ex)
     }
   }
-  async handleSubmit (venue) {
+  async handleSubmit (venue) { //variables???
     try{
       await axios.post('/api/venues', venue);
       this.setState(this.state.venues.push(venue));
@@ -141,13 +141,14 @@ class App extends Component{
                                   venueSelected={venueSelected} 
                                   neighborhoods={neighborhoods} 
                                   types={types}
-                                  neighborhoodSelected={neighborhoodSelected}/> 
+                                  neighborhoodSelected={neighborhoodSelected}
+                                  typeSelected={typeSelected} /> 
                                   : view === 'neighborhoods' ? 
                                   <NeighborhoodView 
                                   neighborhoods={neighborhoods} 
                                   neighborhoodSelected={neighborhoodSelected} 
                                   selectedNeighborhood={selectedNeighborhood} 
-                                  venueSelected={venueSelected}/>
+                                  venueSelected={venueSelected} />
                                   :
                                   <TypeView
                                   types={types}

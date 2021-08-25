@@ -1,11 +1,11 @@
 import React from 'react';
 import InsertNew
  from './InsertNew';
-const Venues = ({venues, venueSelected, neighborhoods, types, neighborhoodSelected}) => {
+const Venues = ({venues, venueSelected, neighborhoods, types, neighborhoodSelected, typeSelected}) => {
     return (
     <>
         <div id='venues-container'>
-        <h1>VENUES</h1>
+        <h1>SPOTS</h1>
             <div id='venue-flex'>
                 {
                 venues.map( venue => { 
@@ -21,12 +21,8 @@ const Venues = ({venues, venueSelected, neighborhoods, types, neighborhoodSelect
                                     <img src={ venue.imageUrl}></img>
                                 </a>
                                 </div>
-                                <div className='website'>
-                                    <a href ={venue.website}>
-                                        Website
-                                    </a>
-                                </div>
-                                <div>[{venue.type.name} in <a onClick={()=> neighborhoodSelected(venue.neighborhood.id)}>{venue.neighborhood.name}</a>]</div>
+                
+                                <div>[<a onClick={()=> typeSelected(venue.type.id)}>{venue.type.name}</a> in <a onClick={()=> neighborhoodSelected(venue.neighborhood.id)}>{venue.neighborhood.name}</a>]</div>
                             </div>
                         );
                     })

@@ -8,12 +8,12 @@ const Types = ({types, typeSelected}) => {
                 {
                 types.map( type => { 
                     return (
-                    <div key={ type.id } >
+                    <div key={ type.id } className='box'>
                         <h3><a onClick={() => typeSelected(type.id)}>
                             { type.name }
                         </a></h3>
                         <div>
-                            {type.venues.length} {type.venues.length === 1 ? 'Establishment' : 'Establishments'} 
+                            {type.venues.length} {type.venues.length === 1 ? 'Spots' : 'Spots'} 
                         </div>
                     </div>
                     );

@@ -2,8 +2,8 @@ import React from 'react';
 
 const Neighborhoods = ({neighborhoods, neighborhoodSelected}) => {
     return (
-        <>
-            <h1>BROOKLYN NEIGHBORHOODS</h1>
+        <div className='list'>
+            <h1>NEIGHBORHOODS</h1>
             <div >
                 {
                 neighborhoods.map( neighborhood => { 
@@ -11,7 +11,8 @@ const Neighborhoods = ({neighborhoods, neighborhoodSelected}) => {
                     <div key={ neighborhood.id } >
                         <h3><a onClick={() => neighborhoodSelected(neighborhood.id)}>
                             { neighborhood.name }
-                        </a></h3>
+                            </a>
+                        </h3>
                         <div>
                             {neighborhood.venues.length} {neighborhood.venues.length === 1 ? 'Establishment' : 'Establishments'} 
                         </div>
@@ -20,7 +21,7 @@ const Neighborhoods = ({neighborhoods, neighborhoodSelected}) => {
                 })
                 }
             </div>
-        </>
+        </div>
     );
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import InsertNew
  from './InsertNew';
-const Venues = ({venues, venueSelected, neighborhoods, types}) => {
+const Venues = ({venues, venueSelected, neighborhoods, types, neighborhoodSelected}) => {
     return (
     <>
         <div id='venues-container'>
@@ -26,7 +26,7 @@ const Venues = ({venues, venueSelected, neighborhoods, types}) => {
                                         Website
                                     </a>
                                 </div>
-                                <div>[{venue.type.name} in {venue.neighborhood.name}]</div>
+                                <div>[{venue.type.name} in <a onClick={()=> neighborhoodSelected(venue.neighborhood.id)}>{venue.neighborhood.name}</a>]</div>
                             </div>
                         );
                     })

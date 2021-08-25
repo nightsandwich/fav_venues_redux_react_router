@@ -1,13 +1,13 @@
 import React from 'react';
 import Venue from './Venue';
 import Venues from './Venues';
-import InsertNew from './InsertNew';
 
-const VenueView = ({selectedVenue, deleteNote, venues, venueSelected, neighborhoods, types}) => {
+
+const VenueView = ({selectedVenue, deleteNote, venues, venueSelected, neighborhoods, types, neighborhoodSelected }) => {
     return (
         <>
             {
-            selectedVenue.id ? <Venue selectedVenue={selectedVenue} deleteNote={deleteNote} /> : <Venues venues={venues} venueSelected={venueSelected} neighborhoods={neighborhoods} types={types}/>
+            selectedVenue.id ? <Venue selectedVenue={selectedVenue} deleteNote={deleteNote} neighborhoodSelected={neighborhoodSelected} /> : <Venues venues={venues} venueSelected={venueSelected} neighborhoods={neighborhoods} types={types} neighborhoodSelected={neighborhoodSelected}/>
             }
         </>       
     )

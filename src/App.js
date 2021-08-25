@@ -24,8 +24,8 @@ class App extends Component{
       notes: [],
       types: [],
       selectedType: {},
-      venueView: true,
-      neighborhoodView: false,
+      view: null,
+      
 //make a VenueView and NeighborhoodView      neighborhoodView: false,
     };
 
@@ -34,12 +34,14 @@ class App extends Component{
     this.deleteNote = this.deleteNote.bind(this);
     this.typeSelected = this.typeSelected.bind(this);
     this.addNote = this.addNote.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   async componentDidMount(){
     this.setState({
       venues: (await axios.get('/api/venues')).data,
       neighborhoods: (await axios.get('/api/neighborhoods')).data,
-      types: (await axios.get('/api/types')).data
+      types: (await axios.get('/api/types')).data,
+      view: 'venues',
     });
   }
   async venueSelected (venueId){
@@ -48,14 +50,12 @@ class App extends Component{
       this.setState({
         selectedVenue: venue,
         notes: venue.notes,
-        venueView: true,
-        neighborhoodView: false,
+        view: 'venues',
       });
     } else {
       this.setState({
         selectedVenue: venueId,
-        venueView: true,
-        neighborhoodView: false,
+        view: 'venues',
       });
     }
   };
@@ -64,14 +64,12 @@ class App extends Component{
       const neighborhood = (await axios.get(`/api/neighborhoods/${neighborhoodId}`)).data;
       this.setState({
         selectedNeighborhood: neighborhood,
-        venueView: false,
-        neighborhoodView: true,
+        view: 'neighborhoods',
       });
     } else {
       this.setState({
         selectedNeighborhood: neighborhoodId,
-        venueView: false,
-        neighborhoodView: true,
+        view: 'neighborhoods',
       });
     }
   };
@@ -105,9 +103,13 @@ class App extends Component{
       console.log(ex)
     }
   }
+  async handleSubmit (venue) {
+      await axios.post('/api/venues');
+      this.setState(this.state.venues.push(venue));
+  }
   render(){
-    const { venues, selectedVenue, neighborhoods, selectedNeighborhood, types, selectedType, venueView, neighborhoodView } = this.state;
-    const {venueSelected, neighborhoodSelected, typeSelected, deleteNote, addNote } = this;
+    const { venues, selectedVenue, neighborhoods, selectedNeighborhood, types, selectedType, view } = this.state;
+    const {venueSelected, neighborhoodSelected, typeSelected, deleteNote, addNote, handleSubmit } = this;
     return (
       <div id='main-container'>
         <div id='header'>
@@ -117,12 +119,12 @@ class App extends Component{
         </div>
         <div id='navbar'>
         {
-        <Navbar venueSelected={venueSelected} venueView={venueView} neighborhoodView={neighborhoodView} />
+        <Navbar venueSelected={venueSelected} neighborhoodSelected={neighborhoodSelected} />
         }
         </div>
           <>
             {
-              venueView ? <VenueView selectedVenue={selectedVenue} deleteNote={deleteNote} venues={venues} venueSelected={venueSelected} neighborhoods={neighborhoods} types={types}/> : <NeighborhoodView neighborhoods={neighborhoods} neighborhoodSelected={neighborhoodSelected} selectedNeighborhood={selectedNeighborhood} venueSelected={venueSelected}/>
+              view === 'venues' ? <VenueView selectedVenue={selectedVenue} deleteNote={deleteNote} venues={venues} venueSelected={venueSelected} neighborhoods={neighborhoods} types={types}/> : <NeighborhoodView neighborhoods={neighborhoods} neighborhoodSelected={neighborhoodSelected} selectedNeighborhood={selectedNeighborhood} venueSelected={venueSelected}/>
             }
           </>
         <div id='footer'>

@@ -9,7 +9,7 @@ import InsertNew from './InsertNew';
 import VenueView from './VenueView';
 import Footer from './Footer';
 import Header from './Header';
-//import Types from './Types';
+import TypeView from './TypeView';
 //import AddNote from './AddNote';
 import NeighborhoodView from './NeighborhoodView';
 
@@ -76,9 +76,15 @@ class App extends Component{
   async typeSelected (typeId){
     if (typeId !== ''){
       const type = (await axios.get(`/api/types/${typeId}`)).data;
-      this.setState({selectedType: type});
+      this.setState({
+        selectedType: type,
+        view: 'types'
+      });
     } else {
-      this.setState({selectedType: typeId});
+      this.setState({
+        selectedType: typeId,
+        view: 'types'
+      });
     }
   }
   async deleteNote(noteId){
@@ -104,8 +110,12 @@ class App extends Component{
     }
   }
   async handleSubmit (venue) {
-      await axios.post('/api/venues');
+    try{
+      await axios.post('/api/venues', venue);
       this.setState(this.state.venues.push(venue));
+    } catch(ex){
+      console.log(ex);
+    }
   }
   render(){
     const { venues, selectedVenue, neighborhoods, selectedNeighborhood, types, selectedType, view } = this.state;
@@ -119,12 +129,32 @@ class App extends Component{
         </div>
         <div id='navbar'>
         {
-        <Navbar venueSelected={venueSelected} neighborhoodSelected={neighborhoodSelected} />
+        <Navbar venueSelected={venueSelected} neighborhoodSelected={neighborhoodSelected} typeSelected={typeSelected}/>
         }
         </div>
           <>
             {
-              view === 'venues' ? <VenueView selectedVenue={selectedVenue} deleteNote={deleteNote} venues={venues} venueSelected={venueSelected} neighborhoods={neighborhoods} types={types}/> : <NeighborhoodView neighborhoods={neighborhoods} neighborhoodSelected={neighborhoodSelected} selectedNeighborhood={selectedNeighborhood} venueSelected={venueSelected}/>
+              view === 'venues' ? <VenueView 
+                                  selectedVenue={selectedVenue} 
+                                  deleteNote={deleteNote} 
+                                  venues={venues} 
+                                  venueSelected={venueSelected} 
+                                  neighborhoods={neighborhoods} 
+                                  types={types}
+                                  neighborhoodSelected={neighborhoodSelected}/> 
+                                  : view === 'neighborhoods' ? 
+                                  <NeighborhoodView 
+                                  neighborhoods={neighborhoods} 
+                                  neighborhoodSelected={neighborhoodSelected} 
+                                  selectedNeighborhood={selectedNeighborhood} 
+                                  venueSelected={venueSelected}/>
+                                  :
+                                  <TypeView
+                                  types={types}
+                                  typeSelected={typeSelected}
+                                  selectedType={selectedType}
+                                  venueSelected={venueSelected} />
+
             }
           </>
         <div id='footer'>

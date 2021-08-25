@@ -4,7 +4,13 @@ const {Venue, Neighborhood, Type, Note} = require('../db');
 
 router.get('/', async(req, res, next)=> {
     try {
-      res.send(await Type.findAll());
+      res.send(await Type.findAll({
+        include: [
+          {
+            model: Venue
+          }
+        ]
+      }));
     }
     catch(ex){
       next(ex);

@@ -70,36 +70,30 @@ router.post('/:id/notes', async(req, res, next)=> {
       next(ex);
     }
   });
-/*
+
   router.post('/', async(req, res, next)=> {
     try {
+        /*
+        const neighborhood = await Neighborhood.findAll({
+            where: 
+                {
+                    name: req.body.neighborhood
+                }
+        });
+        const type = await Type.findAll({       
+             where: 
+                {
+                    name: req.body.type
+                }
+        });
         //console.log(req.body);
-        const neighborhood = await Venue.findAll({
-            include: [
-                {
-                    model: Neighborhood,
-                    where: {
-                        name: req.body.neighborhood
-                    }
-                }
-            ]
-        });
-        const type = await Venue.findAll({
-            include: [
-                {
-                    model: Type,
-                    where: {
-                        name: req.body.type
-                    }
-                }
-            ]
-        });
-      res.status(201).send(await Venue.create({ name: req.body.venueName, website: req.body.website, neighborhoodId: neighborhood.id, typeId: type.id }));
+        console.log(neighborhood.dataValues.id); */
+      res.status(201).send(await Venue.create({ name: req.body.venueName, website: req.body.website, neighborhoodId: req.body.neighborhoodId, typeId: req.body.typeId}));
     }
     catch(ex){
       next(ex);
     }
-  }); */
+  }); 
 
   
   module.exports = router;

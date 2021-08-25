@@ -2,7 +2,7 @@ import React from 'react';
 
 const Types = ({types, typeSelected}) => {
     return (
-        <div >
+        <div className='list'>
             <h1>CATEGORIES</h1>
             <div >
                 {

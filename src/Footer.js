@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         < >
-            <h1>FOOTER</h1>
+            <p id='footer'>Built by Corinne at <a href="http://www.fullstackacademy.com/">Fullstack Academy</a></p>
         </>
     );
 }

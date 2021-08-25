@@ -18,7 +18,7 @@ const Venues = ({venues, venueSelected, neighborhoods, types, neighborhoodSelect
                                 </div>
                                 <div>
                                 <a onClick={() => venueSelected(venue.id)}> 
-                                    <img src={ venue.imageUrl}></img>
+                                    <img src={ venue.imageUrl ? venue.imageUrl : './stock.png'}></img>
                                 </a>
                                 </div>
                 

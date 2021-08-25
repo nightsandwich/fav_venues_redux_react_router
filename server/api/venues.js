@@ -91,8 +91,8 @@ router.post('/:id/notes', async(req, res, next)=> {
         });
         //console.log(req.body);
         console.log(neighborhood.dataValues.id); */
-        const imageUrl = req.body.imageUrl ? req.body.imageUrl : 'https://ontheworldmap.com/usa/city/new-york-city/map-of-brooklyn-neighborhoods-max.jpg';
-      res.status(201).send(await Venue.create({ name: req.body.venueName, website: req.body.website, neighborhoodId: req.body.neighborhoodId, typeId: req.body.typeId, imageUrl: imageUrl}));
+        
+      res.status(201).send(await Venue.create({ name: req.body.venueName, website: req.body.website, neighborhoodId: req.body.neighborhoodId, typeId: req.body.typeId, imageUrl: req.body.imageUrl}));
     }
     catch(ex){
       next(ex);

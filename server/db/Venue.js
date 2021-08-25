@@ -8,7 +8,7 @@ const Venue = db.define('venue', {
     },
     imageUrl: {
       type: STRING,
-      defaultValue: 'https://ontheworldmap.com/usa/city/new-york-city/map-of-brooklyn-neighborhoods-max.jpg'
+      defaultValue: ''
     },
     website: {
       type: STRING,

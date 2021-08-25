@@ -9,7 +9,7 @@ const Venue = ({selectedVenue, deleteNote, addNote, neighborhoodSelected, typeSe
                     <h3>{selectedVenue.name}</h3>
                     <p>Category: <a onClick={() => typeSelected(selectedVenue.type.id)}>{selectedVenue.type.name}</a></p>
                     <p>Neighborhood: <a onClick={() => neighborhoodSelected(selectedVenue.neighborhood.id)}> {selectedVenue.neighborhood.name}</a></p>
-                    <img src={selectedVenue.imageUrl} />
+                    <img src={selectedVenue.imageUrl ? selectedVenue.imageUrl : './stock.png'} />
                     <div className='website'>
                         <a href={selectedVenue.website}>Take Me To The Website!</a>
                     </div>

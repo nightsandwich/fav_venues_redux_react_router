@@ -8,7 +8,10 @@ router.get('/', async(req, res, next)=> {
                 {
                 model: Venue
                 }
-            ] 
+            ],
+            order: [
+                ['name']
+            ]
         }));
     }
     catch(ex){
@@ -23,6 +26,9 @@ router.get('/', async(req, res, next)=> {
                     {
                         model: Venue,
                     }
+                ],
+                order: [
+                    ['name']
                 ]
             }));
             res.send(neighborhood);

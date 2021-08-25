@@ -9,6 +9,9 @@ router.get('/', async(req, res, next)=> {
           {
             model: Venue
           }
+        ],
+        order: [
+          ['name']
         ]
       }));
     }
@@ -23,6 +26,9 @@ router.get('/', async(req, res, next)=> {
                 {
                     model: Venue,
                 }
+            ],
+            order: [
+              ['name']
             ]
         }));
         res.send(type);

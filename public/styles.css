@@ -79,6 +79,7 @@ a:hover {
             display: grid;
             grid-template-rows: 10% 50% 20% 10%;
         }
+        
             .venue-info >div:first-child {
                 grid-row: 1;
             }
@@ -91,6 +92,7 @@ a:hover {
             }
             .venue-info >div:last-child{
                 grid-row: 4;
+                
             }
             img {
                 max-height: 200px;   
@@ -224,7 +226,7 @@ a:hover {
 .box {
     border: 1px solid black;
     margin: 1em;
-    background-color: rgb(255, 62, 14);
+ 
 }
 #insert-new-grid {
     margin-left: 1em;

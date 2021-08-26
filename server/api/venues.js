@@ -67,7 +67,8 @@ router.get('/:id', async(req, res, next) => {
 router.post('/:id/notes', async(req, res, next)=> {
     try {
         //console.log(req.body);
-      res.status(201).send(await Note.create({ venueId: req.params.id, comment: req.body.comment}));
+        await Note.create({ venueId: req.params.id, comment: req.body.comment});
+        res.status(201).redirect('http://localhost:3000/');
     }
     catch(ex){
       next(ex);
@@ -91,8 +92,14 @@ router.post('/:id/notes', async(req, res, next)=> {
         });
         //console.log(req.body);
         console.log(neighborhood.dataValues.id); */
-        
-      res.status(201).send(await Venue.create({ name: req.body.venueName, website: req.body.website, neighborhoodId: req.body.neighborhoodId, typeId: req.body.typeId, imageUrl: req.body.imageUrl}));
+        await Venue.create({
+            name: req.body.venueName,
+            website: req.body.website,
+            neighborhoodId: req.body.neighborhoodId,
+            typeId: req.body.typeId,
+            imageUrl: req.body.imageUrl
+        });
+      res.status(201).redirect('http://localhost:3000/');
     }
     catch(ex){
       next(ex);

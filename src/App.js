@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-//import Venues from './Venues';
-//import Venue from './Venue';
-import Navbar from './Navbar';
-//import Neighborhoods from './Neighborhoods';
-import InsertNew from './InsertNew';
-import VenueView from './VenueView';
-import Footer from './Footer';
 import Header from './Header';
-import TypeView from './TypeView';
-//import AddNote from './AddNote';
+import Navbar from './Navbar';
+import VenueView from './VenueView';
 import NeighborhoodView from './NeighborhoodView';
+import TypeView from './TypeView';
+import Footer from './Footer';
 
 class App extends Component{
   constructor(props){
@@ -25,8 +20,6 @@ class App extends Component{
       types: [],
       selectedType: {},
       view: null,
-      
-//make a VenueView and NeighborhoodView      neighborhoodView: false,
     };
 
     this.venueSelected = this.venueSelected.bind(this);
@@ -99,10 +92,7 @@ class App extends Component{
   }
   async addNote(venueId, note){
     try{
-      //console.log(note);
-      //const note = {id, comment, venueId};
       await axios.post(`/api/venues/${venueId}/notes`, note);
-      //const notes = this.state.notes.push(note);
       this.setState(this.state.notes.push(note));
     }
     catch(ex){

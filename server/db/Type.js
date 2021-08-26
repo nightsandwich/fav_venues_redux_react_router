@@ -3,7 +3,7 @@ const {ENUM} = db.Sequelize;
 
 const Type = db.define('type', {
     name: {
-      type: ENUM('Bar','Restaurant','Activity', 'Museum', 'Other'),
+      type: ENUM('Bar','Restaurant','Activity/Gym', 'Museum', 'Store', 'Other'),
       defaultValue: 'Other',
     }
   });

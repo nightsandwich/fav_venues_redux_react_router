@@ -218,15 +218,32 @@ a:hover {
         margin: 1em;
         background-color: rgb(255, 62, 14);
     }
+/* Neighborhoods */
+    /* 
+    main-container
+        header
+        navbar
+        lists
+            list
+        insert-new
+        footer
+    */
+
 
 .list {
     display: flex;
     flex-direction: column;
+    align-content: center;  
+}
+.list > h3 {
+    margin-top: .25em;
 }
 .box {
     border: 1px solid black;
     margin: 1em;
- 
+    padding-left:.5em; 
+    padding-bottom: .25em;
+
 }
 #insert-new-grid {
     margin-left: 1em;

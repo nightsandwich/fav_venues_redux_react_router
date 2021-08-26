@@ -7,7 +7,19 @@ const VenueView = ({selectedVenue, deleteNote, venues, venueSelected, neighborho
     return (
         <>
             {
-            selectedVenue.id ? <Venue selectedVenue={selectedVenue} deleteNote={deleteNote} neighborhoodSelected={neighborhoodSelected} typeSelected={typeSelected}/> : <Venues venues={venues} venueSelected={venueSelected} neighborhoods={neighborhoods} types={types} neighborhoodSelected={neighborhoodSelected} typeSelected={typeSelected}/>
+            selectedVenue.id ? <Venue 
+                                selectedVenue={selectedVenue} 
+                                deleteNote={deleteNote} 
+                                neighborhoodSelected={neighborhoodSelected} 
+                                typeSelected={typeSelected} /> 
+                                : 
+                                <Venues 
+                                venues={venues} 
+                                venueSelected={venueSelected} 
+                                neighborhoods={neighborhoods} 
+                                types={types} 
+                                neighborhoodSelected={neighborhoodSelected} 
+                                typeSelected={typeSelected} />
             }
         </>       
     )

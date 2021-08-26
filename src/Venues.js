@@ -1,7 +1,7 @@
 import React from 'react';
 import InsertNew
  from './InsertNew';
-const Venues = ({venues, venueSelected, neighborhoods, types, neighborhoodSelected, typeSelected}) => {
+const Venues = ({venues, venueSelected, neighborhoods, types, typeSelected}) => {
     return (
     <>
         <div id='venues-container'>
@@ -22,7 +22,7 @@ const Venues = ({venues, venueSelected, neighborhoods, types, neighborhoodSelect
                                 </a>
                                 </div>
                 
-                                <div>[<a onClick={()=> typeSelected(venue.type.id)}>{venue.type.name}</a> in <a onClick={()=> neighborhoodSelected(venue.neighborhood.id)}>{venue.neighborhood.name}</a>]</div>
+                                <div>[<a onClick={()=> typeSelected(venue.type.id)}>{venue.type.name}</a> in <a onClick={()=> handleSubmit(venue.neighborhood.id)}>{venue.neighborhood.name}</a>]</div>
                             </div>
                         );
                     })

@@ -1,7 +1,8 @@
 import React from 'react';
-
-const Neighborhoods = ({neighborhoods, neighborhoodSelected}) => {
+//import InsertNew from './InsertNew';
+const Neighborhoods = ({neighborhoods, neighborhoodSelected, types}) => {
     return (
+    <div className='lists'>
         <div className='list'>
             <h1>NEIGHBORHOODS</h1>
             <div >
@@ -23,7 +24,13 @@ const Neighborhoods = ({neighborhoods, neighborhoodSelected}) => {
                 }
             </div>
         </div>
+    </div>
     );
 }
 
 export default Neighborhoods;
+       /* <div id='insert-new'>
+        {
+        <InsertNew neighborhoods={neighborhoods} types={types}/>
+        }
+        </div> */

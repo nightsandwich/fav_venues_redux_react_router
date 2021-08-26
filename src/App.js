@@ -81,19 +81,25 @@ class App extends Component{
     }
   }
   async deleteNote(noteId){
+    const {notes} = this.state;
     try{
       await axios.delete(`/api/notes/${noteId}`);
       //const notes = this.state.notes.filter(i => i.id !== noteId);
-      this.setState(this.state.notes.filter(i => i.id !== noteId));
+      this.setState({
+        notes: notes.filter(i => i.id !== noteId)
+      });
     }
     catch(ex){
       console.log(ex)
     }
   }
-  async addNote(venueId, note){
+  async addNote(venueId){
+    const {notes} = this.state;
     try{
-      await axios.post(`/api/venues/${venueId}/notes`, note);
-      this.setState(this.state.notes.push(note));
+      await axios.post(`/api/venues/${venueId}/notes`);
+      this.setState({
+        notes: notes.push(note)
+      });
     }
     catch(ex){
       console.log(ex)
@@ -109,7 +115,7 @@ class App extends Component{
   }
   render(){
     const { venues, selectedVenue, neighborhoods, selectedNeighborhood, types, selectedType, view } = this.state;
-    const {venueSelected, neighborhoodSelected, typeSelected, deleteNote, addNote, handleSubmit } = this;
+    const {venueSelected, neighborhoodSelected, typeSelected, deleteNote } = this;
     return (
       <div id='main-container'>
         <div id='header'>

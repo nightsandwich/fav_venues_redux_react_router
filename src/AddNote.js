@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const AddNote = ({addNote, selectedVenue}) => {
+const AddNote = ({selectedVenue}) => {
     return (
         <div id='add-note'>
         {

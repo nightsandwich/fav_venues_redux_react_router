@@ -60,7 +60,7 @@ return (
                     </div>
                 <br />
                 </div>
-                <input className='submit' type='submit' value='Submit' onClick = {()=>InsertNew(venueName, website, neighborhoodId, typeId, imageUrl)}></input>
+                <input className='submit' type='submit' value='Submit' onClick = {()=>handleSubmit(venueName, website, neighborhoodId, typeId, imageUrl)}></input>
             </form>
         }
     </div>

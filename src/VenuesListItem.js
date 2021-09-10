@@ -19,7 +19,7 @@ const VenuesListItem = ( {venues}) => {
                             <div key={ venue.id }  className={venue.visited ? 'visited' : 'mustvisit'}>
                                 <div>
                                     <Link to={`/venue/${venue.id}`}>
-                                        <h3>{ venue.name }</h3>
+                                        <h3 className={venue.visited ? 'strike' : ''}>{ venue.name }</h3>
                                     </Link>
                                 </div>    
                                 <div className='color'>

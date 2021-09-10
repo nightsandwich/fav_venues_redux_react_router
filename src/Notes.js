@@ -6,7 +6,7 @@ import {deleteNote} from './store';
 const Notes = (props) => {
    // console.log(notes)
     return (
-    <>
+    <div id='notes'>
     
             <h3 style={{textAlign:'center'}}>     NOTES</h3>
         <div className='notes'>
@@ -26,7 +26,7 @@ const Notes = (props) => {
             </ul>  
         </div>
    
-    </>
+    </div>
     );
 };
 

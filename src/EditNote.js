@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux';
 import React, { Component } from 'react'
-import {newNote} from './store';
+import {newNote, deleteNote} from './store';
 
 class _EditNote extends Component {
     constructor(){
@@ -12,12 +12,6 @@ class _EditNote extends Component {
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     };
-    // async componentDidMount(){
-    //     //console.log(this);
-    //     const {data: notes} = await axios.get(`/api/notes/${this.props.venueId}`);
-    //     this.setState({notes});
-    //     //console.log('state:', this.state)
-    // }
     onChange(ev){
         this.setState({comment: ev.target.value});
         //console.log('state', this.state)
@@ -31,32 +25,43 @@ class _EditNote extends Component {
         
         return (
             <>
-            
-            {
-            <form className='addnote'>
-                <input name="comment" value={this.state.comment} onChange={this.onChange}/>
-                <button onClick={this.onSubmit}>ADD NOTE</button>
-            </form>    
-            }
-            
+                <div id='notes'>
+                    <h3 style={{textAlign:'center'}}> NOTES</h3>
+                    <div className='notes'>
+                        <ul className='innernotes'>
+                        {
+                            this.props.notes.map((note) => {
+                            return (
+                            <>
+                               <li key={note.id} className='notes'>{note.comment}<span><button onClick={() => this.props.handleDelete(note.id, this.props.venueId)}>X</button></span></li>                   
+                            </>
+                            );
+                            })
+                        }
+                        </ul>  
+                        {
+                        <form className='addnote'>
+                            <input name="comment" value={this.state.comment} onChange={this.onChange}/>
+                            <button onClick={this.onSubmit}>ADD NOTE</button>
+                        </form>    
+                        }
+                    </div>
+
+                </div>
             </>
         )
     }
 }
  const mapStateToProps =  (state, otherProps) => {
-     //console.log(otherProps);
     const venueId = otherProps.match.params.id * 1;
-    //console.log(venueId);
-    return {venueId};
-    // const notes = (await axios.get(`/api/notes/${otherProps.match.params.id}`)).data;
-    // return {notes};
- }
-const EditNote = connect(mapStateToProps, ((dispatch, {history}) => {
-    return {
-        newNote: (note) => {
-            dispatch(newNote(note, history));
-        }
-    }
-}))(_EditNote);
+    const notes = state.notes.filter(note => note.venueId === venueId);
+    return {venueId, notes};
+ };
+ const mapDispatchToProps = (dispatch, otherProps) => ({
+    handleDelete: (id, venueId)=>dispatch(deleteNote(id, venueId, otherProps.history)),
+    newNote: (note) => dispatch(newNote(note, history))
+});
+
+const EditNote = connect(mapStateToProps, mapDispatchToProps)(_EditNote);
 
 export default EditNote;

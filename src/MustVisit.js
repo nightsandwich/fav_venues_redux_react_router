@@ -6,7 +6,7 @@ const MustVisit = ({venues}) => {
 
     return (
         <>
-        <h2>You Should Go Here</h2>
+        <h2>You Should Go To {!venues.length ? "...you've already been everywhere. Maybe stay in and read a book" : venues.length === 1 ? 'This 1 Place!' : 'These ' + venues.length + ' Places!'}! </h2>
        <VenuesListItem venues={venues}/>
        </>
     );

@@ -47,7 +47,7 @@ const typesReducer = (state = [], action) => {
         state = action.types;
     }
     if(action.type === NEW_TYPE){
-        state = [...state, action.type];
+        state = [...state, action.category];
     }
     return state;
 }
@@ -134,7 +134,7 @@ const newNote = (note, history) => {
     return async(dispatch) => {
         const created = (await axios.post('/api/notes',  note )).data;
         dispatch(_newNote(created));
-        history.push(`/venue/${venueId}`);
+        //history.push(`/venue/${venueId}`);
     }
 }
 
@@ -187,7 +187,7 @@ const visited = (venue, history) => {
     return async(dispatch) => {
         const updated = (await axios.put(`/api/venues/${venue.id}`, {visited: !venue.visited })).data;
         dispatch(_visited(updated));
-        history.push(`/venues`);
+        history.push(!venue.visited ? '/venues/visited' : '/venues/mustvisit');
         
     }
 }
@@ -204,15 +204,15 @@ const newHood = (neighborhood, history) => {
         //history.push(`/neighborhoods/${created.id}`);
     }
 }
-const _newType = (type) => {
+const _newType = (category) => {
     return {
         type: NEW_TYPE,
-        type
+        category
     }
 }
-const newType = (type, history) => {
+const newType = (category, history) => {
     return async(dispatch) => {
-        const created = (await axios.post('/api/types', type)).data;
+        const created = (await axios.post('/api/types', category)).data;
         dispatch(_newType(created));
         //history.push(`/types/${created.id}`);
         

@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 const Header = () => {
     return (
         <>
-        <h1 style={{textAlign: "center"}}>BROOKLYN SPOTS</h1>
+        <h1 style={{textAlign: "center"}}> COOL SPOTS IN BROOKLYN</h1>
         <div id='header' >
             
                 <NavLink to='/venues'>All Places</NavLink>

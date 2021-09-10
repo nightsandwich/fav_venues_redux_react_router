@@ -6,7 +6,7 @@ const Visited = ({venues}) => {
 
     return (
         <>
-        <h2>You've Been Here!</h2>
+        <h2>You've Been Here! {!venues.length ? 'Meaning nowhere!' : venues.length === 1 ? venues.length + ' Place!' : venues.length + ' Places!'}</h2>
        <VenuesListItem venues={venues}/>
        </>
     );

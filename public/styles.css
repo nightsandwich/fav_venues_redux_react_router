@@ -8,13 +8,17 @@ body{
 }
 
 #header {
-    background-color: lightsteelblue;
+    background-color: rgb(96, 129, 129);
+    color: cornsilk;
     margin-left: 1rem;
     margin-right: 1rem;
 }
 a {
     text-decoration: none;
     color: black;
+}
+.notes li {
+    font-size: small;
 }
 img {
     border: 2px solid black;
@@ -55,10 +59,10 @@ a:hover{
     margin: .25rem .25rem;
 }
 .visited {
-    background-color: rgba(9, 168, 70, 0.411);
+    background-color: rgba(255, 51, 0, 0.562); 
 }
 .mustvisit {
-    background-color: rgba(255, 51, 0, 0.562);
+    background-color: rgba(9, 168, 70, 0.411);
 }
 .venueform{
     display: flex;
@@ -79,10 +83,11 @@ a:hover{
     justify-content: space-evenly;
 
 }
-.notes{
+.notes #notes{
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    
 }
 .innernotes{
     display: flex;
@@ -105,12 +110,14 @@ a:hover{
     background-color: cornsilk;
     margin :1rem;
     border-radius: 10%;
+    
 }
 
 .addnote {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-grow: 2;
 }
 #container{
     display: flex;
@@ -199,7 +206,7 @@ h3{
     filter: grayscale(0%);
     filter: gray;
     -webkit-filter: grayscale(0%);
-    filter: none;
+    filter: saturate(3);
     transition: .10s ease;
     }
 .active{
@@ -211,6 +218,9 @@ h3{
     flex-direction: column;
     align-items: center;
 
+}
+h3.strike{
+    text-decoration: line-through 2px;
 }
 @media all and (max-width: 320px) {
     * {

@@ -9,7 +9,8 @@ const _Type = ({type, venues}) => {
     }
     return (
         <>
-        <h1>{type.name}</h1>
+        <h1>{venues.length ? venues.length : 'ZERO'} {type.name} Sorta {venues.length === 1 ? 'Place' : 'Places'}</h1>
+        {!venues.length ? ':( this page is lonely' : ''}
         <VenuesListItem venues={venues} />
         </>
     );

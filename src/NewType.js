@@ -14,15 +14,14 @@ class _NewType extends Component {
     onChange(ev){
         this.setState({name: ev.target.value});
     }
+    isDisabled(){
+        if(!this.state.name.length || this.props.types.filter(type => {
+            if (type.name === this.state.name) return true;
+        }).length) return true;
+        else return false;
+    }
     async onSave(ev){
         ev.preventDefault();
-        const allTypes = this.props.types;
-        for (const types of allTypes){
-            if(types.name === this.state.name){
-                alert('This category already exists');
-                this.setState({name: ''});   
-            }
-        }
         try {
             await this.props.newType(this.state);
             this.state.name = '';
@@ -31,20 +30,19 @@ class _NewType extends Component {
             console.log(ex);
         }
     }
-
     render(){
         return (
             <form className='singleform'>
-                <input name='name' onChange={this.onChange} value={this.state.name}/>
-                <button onClick={this.onSave}>Add Category</button>
+                <input name='name' onChange={this.onChange} value={this.state.name} />
+                <button onClick={this.onSave} isDisabled={this.isDisabled()}>Add Category</button>
             </form>
         )
     }
 }
-const NewType = connect(state=>state, (dispatch, {history})=> {
+const NewType = connect(({types}) => ({types}), (dispatch, {history})=> {
     return {
-        newType: (type) => {
-            dispatch(newType(type, history));
+        newType: (category) => {
+            dispatch(newType(category, history));
         }
     }
 })(_NewType);

@@ -10,19 +10,21 @@ class _NewHood extends Component {
         }
         this.onChange = this.onChange.bind(this);
         this.onSave = this.onSave.bind(this);
+        this.isDisabled = this.isDisabled.bind(this);
+    }
+    isDisabled(){
+        console.log('xxxxxxxx', this.props);
+        if(!this.state.name.length || this.props.neighborhoods.filter(neighborhood => {
+            if (neighborhood.name === this.state.name) return true;
+        }).length) return true;
+        else return false;
     }
     onChange(ev){
         this.setState({name: ev.target.value});
     }
     async onSave(ev){
         ev.preventDefault();
-        const allHoods = this.props.neighborhoods;
-        for (const hoods of allHoods){
-            if(hoods.name === this.state.name){
-                alert('This neighborhood already exists');
-                this.setState({name: ''});   
-            }
-        }
+      
         try {
             await this.props.newHood(this.state);
             this.state.name = '';
@@ -35,13 +37,13 @@ class _NewHood extends Component {
     render(){
         return (
             <form className='singleform'>
-                <input name='name' onChange={this.onChange} value={this.state.name}/>
-                <button onClick={this.onSave}>Add Neighborhood</button>
+                <input name='name' onChange={this.onChange} value={this.state.name} />
+                <button onClick={this.onSave} isDisabled={this.isDisabled()}>Add Neighborhood</button>
             </form>
         )
     }
 }
-const NewHood = connect(state=>state, (dispatch, {history})=> {
+const NewHood = connect(({neighborhoods}) => ({neighborhoods}), (dispatch, {history})=> {
     return {
         newHood: (neighborhood) => {
             dispatch(newHood(neighborhood, history));

@@ -40,18 +40,9 @@ class _App extends Component{
               <Route component={Visited} path='/venues/visited' exact/>
               <div id='container'>
               <Route component={Venue} path='/venue/:id' exact/>
-                <div id='notes'>
-                  <Route component={Notes} path='/venue/:id' exact/>
-                  <Route component={EditNote} path='/venue/:id' />
-                </div>
+              <Route component={EditNote} path='/venue/:id' />
+                
               </div>
-              <br/>
-              <br/>
-              <br/>
-              <br/>
-              <br/>
-              <br/>
-              <br/>
           
           </div>
         </Router>

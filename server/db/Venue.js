@@ -9,11 +9,11 @@ const Venue = db.define('venue', {
     },
     imageUrl: {
       type: STRING,
-      defaultValue: ''
+      defaultValue: 'stock.png'
     },
     website: {
       type: STRING,
-      defaultValue: 'https://www.yelp.com/'//need to insert
+      defaultValue: 'https://www.google.com/'
     },
     visited: {
       type: BOOLEAN,

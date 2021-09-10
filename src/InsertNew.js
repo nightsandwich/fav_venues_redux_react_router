@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
 import {create} from './store';
-import Venues from './Venues';
+import VenuesListItem from './VenuesListItem';
 
 class _InsertNew extends Component {
     constructor(props){
@@ -15,8 +15,14 @@ class _InsertNew extends Component {
         }
         this.onChange = this.onChange.bind(this);
         this.onSave = this.onSave.bind(this);
+        this.isDisabled = this.isDisabled.bind(this);
     }
-
+    isDisabled(){
+        if(!this.state.venueName.length || this.props.venues.filter(venue => {
+            if (venue.name === this.state.venueName) return true;
+        }).length) return true;
+        else return false;
+    }
     onChange(ev){
         const change = {};
         change[ev.target.name] = ev.target.value;
@@ -26,18 +32,17 @@ class _InsertNew extends Component {
         const {venueName, neighborhoodId, typeId, website, imageUrl} = this.state;
         ev.preventDefault();
         try {
-            await this.props.create(venueName, neighborhoodId, typeId, website ? website : 'https://www.yelp.com', imageUrl ? imageUrl : 'stock.png');
+            await this.props.create(venueName, neighborhoodId, typeId, website ? website : 'https://www.yelp.com', imageUrl ? imageUrl : 'brooklyn.png');
         }
         catch(ex){
             console.log(ex);
         }
-       // console.log(this.state);
     }
 
 render() {
     const {venueName, neighborhoodId, typeId, website, imageUrl} = this.state;
     const {onSave, onChange} = this;
-    const {neighborhoods, types} = this.props;
+    const {neighborhoods, types, venues} = this.props;
     
     return (
     <>
@@ -67,7 +72,7 @@ render() {
                 <div className='dropdowns'>
                     <div id='neighborhoods'>
                         <label >
-                            Neighborhood
+                            Neighborhoods
                         </label>
                         <br></br>
                         <select name='neighborhoodId' onChange={ onChange } value={neighborhoodId}>
@@ -100,17 +105,17 @@ render() {
                         </select>
                     </div>
                 <br />
-                <button className='submit' >ADD</button>
+                <button className='submit' disabled={this.isDisabled()}>ADD</button>
                 </div>
             </form>
         }
-        <Venues />
+        <VenuesListItem venues={venues} />
     </div>
     </>
     );
 };
 }
-const mapStateToProps = ({neighborhoods, types}) => ({neighborhoods, types});
+const mapStateToProps = ({neighborhoods, types, venues}) => ({neighborhoods, types, venues});
 const mapDispatchToProps = (dispatch, {history}) => (
     {
         create: (venueName, neighborhoodId, typeId, website, imageUrl) => {

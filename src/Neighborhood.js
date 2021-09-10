@@ -8,7 +8,8 @@ const _Neighborhood = ({neighborhood, venues}) => {
     }
     return (
     <>
-        <h1>{neighborhood.name}</h1>
+        <h1>{!venues.length ? 'ZERO Spots ' : venues.length === 1 ? '1 Spot' : venues.length + ' Spots '} in {neighborhood.name}</h1>
+        {!venues.length ? ':( this page is lonely' : ''}
         <VenuesListItem venues={venues}/>
     </>
     );

@@ -45,7 +45,14 @@ class _App extends Component{
                   <Route component={EditNote} path='/venue/:id' />
                 </div>
               </div>
-          <Footer />
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+          
           </div>
         </Router>
         

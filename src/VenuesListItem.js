@@ -35,8 +35,11 @@ const VenuesListItem = ( {venues}) => {
                                         <Link to={`/neighborhood/${venue.neighborhood.id}`}>#{venue.neighborhood.name.toLowerCase().split('').filter(letter => letter !== ' ').join('')}</Link>
                                     </div>
                                     <div>  
-                                        <Link to={`/venue/${venue.id}`}>#notes({venue.notes.length})</Link>
+                                       <Link to={`/venue/${venue.id}`}>#notes({venue.notes.length})</Link>
                                     </div>
+                                    <div>  
+                                       <Link to={`/venue/${venue.id}`}>#{venue.visited ? 'visited' : 'mustgothere'}</Link>
+                                    </div>  
                                 </div>
                             </div>
                         );

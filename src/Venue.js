@@ -26,7 +26,7 @@ const _Venue = ({venue, deleteVenue, visited}) => {
                             <Link to={`/type/${venue.type.id}`}>#{venue.type.name.toLowerCase().split('').filter(letter => letter !== ' ').join('')}</Link>
                         </div>
                         <div>  
-                            <Link to={`/neighborhoods/${venue.neighborhood.id}`}>#{venue.neighborhood.name.toLowerCase().split('').filter(letter => letter !== ' ').join('')}</Link>
+                            <Link to={`/neighborhood/${venue.neighborhood.id}`}>#{venue.neighborhood.name.toLowerCase().split('').filter(letter => letter !== ' ').join('')}</Link>
                         </div>
                         <div>  
                             <a href={`${venue.website}`}>#website</a>

@@ -81,10 +81,14 @@ a:hover{
 }
 .notes{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-
+    justify-content: flex-start;
+}
+.innernotes{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
 }
 .venueform{
     border: 1px solid black;
@@ -152,10 +156,10 @@ a:hover{
     padding: .25rem;
     background-color: darkcyan;
     color: white;
-    font-weight: bold;;
+    font-weight: bold;
 }
 button:hover {
-    background-color: yellow;
+    background-color: rgba(255, 174, 0, 0.76);
 }
 h3{
     margin: .25rem;
@@ -176,9 +180,7 @@ h3{
 }
 
 
-button:hover {
-    transform: skew(-10deg);
-  }
+
 
   button {
     border: 1px solid #ff7a59;
@@ -186,8 +188,7 @@ button:hover {
   
   button:hover {
     border: 3px dotted #f11e1e;
-    color: #ff7a59b2;
-    background: #fff;
+    
   }
   .color img{
     filter: grayscale(100%);

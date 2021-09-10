@@ -8,15 +8,17 @@ const Notes = (props) => {
     return (
     <>
     
+            <h3 style={{textAlign:'center'}}>     NOTES</h3>
         <div className='notes'>
-            <h3>NOTES</h3>
-            <ul>
+            <ul className='innernotes'>
                 {
                     props.notes.map((note) => {
                         return (
                             <>
-                                <li key={note.id} className='notes'>{note.comment}</li>
-                                <button onClick={() => props.handleDelete(note.id, note.venueId)}>x</button>
+                                <li key={note.id} className='notes'>{note.comment}<span><button onClick={() => props.handleDelete(note.id, note.venueId)}>X</button></span></li>
+                                
+                                
+                                
                             </>
                         );
                     })

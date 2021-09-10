@@ -31,6 +31,7 @@ const syncAndSeed = async()=> {
     const museum = await Type.create({name: 'Museum'});
     const store = await Type.create({name: 'Store'});
     const other = await Type.create({name: 'Other'});
+    const park = await Type.create({name: 'Park'});
 
     const wburg = await Neighborhood.create({name: 'Williamsburg'});
     const greenpoint = await Neighborhood.create({name: 'Greenpoint'});
@@ -38,7 +39,9 @@ const syncAndSeed = async()=> {
     const bushwick = await Neighborhood.create({name: 'Bushwick'});
     const crownheights = await Neighborhood.create({name: 'Crown Heights'});
     const brighton = await Neighborhood.create({name: 'Brighton Beach'});
-    const parkslope = await Neighborhood.create({name: 'Park SLope'});
+    const parkslope = await Neighborhood.create({name: 'Park Slope'});
+    const cobblehill = await Neighborhood.create({name: 'Cobble Hill'});
+    const redhook = await Neighborhood.create({name: 'Red Hook'}); 
 
     const banter = await Venue.create({name: 'Banter', visited: true, imageUrl: 'http://banterbrooklyn.com/wp-content/uploads/2011/03/headon.jpg', website: 'https://banterbrooklyn.com/', typeId: bar.id, neighborhoodId: wburg.id});
     const forma = await Venue.create({name: 'Forma', visited: true, imageUrl: 'https://s3-media0.fl.yelpcdn.com/bphoto/9siBwTJADkeBunhZLbND3A/o.jpg', website: 'https://www.formapasta.com/', typeId: restaurant.id, neighborhoodId: wburg.id});

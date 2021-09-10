@@ -14,12 +14,12 @@ class _NewType extends Component {
     onChange(ev){
         this.setState({name: ev.target.value});
     }
-    isDisabled(){
-        if(!this.state.name.length || this.props.types.filter(type => {
-            if (type.name === this.state.name) return true;
-        }).length) return true;
-        else return false;
-    }
+    // isDisabled(){
+    //     if(!this.state.name.length || this.props.types.filter(type => {
+    //         if (type.name === this.state.name) return true;
+    //     }).length) return true;
+    //     else return false;
+    // }
     async onSave(ev){
         ev.preventDefault();
         try {
@@ -31,10 +31,12 @@ class _NewType extends Component {
         }
     }
     render(){
+        const isDisabled = this.state.name.length === 0 || this.props.types.find(type => type.name === this.state.name);
+
         return (
             <form className='singleform'>
                 <input name='name' onChange={this.onChange} value={this.state.name} />
-                <button onClick={this.onSave} isDisabled={this.isDisabled()}>Add Category</button>
+                <button onClick={this.onSave} isDisabled={isDisabled}>Add Category</button>
             </form>
         )
     }

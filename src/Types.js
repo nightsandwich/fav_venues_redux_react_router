@@ -11,7 +11,7 @@ const _Types = ({types, venues}) => {
                 types.map( type => { 
                     return (
                     <div key={ type.id } className='box'>
-                        <h3><Link to={`/types/${type.id}`}>
+                        <h3><Link to={`/type/${type.id}`}>
                             { type.name }
                         </Link></h3>
                         <div>

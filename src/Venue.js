@@ -19,8 +19,8 @@ const _Venue = ({venue, deleteVenue, visited}) => {
                     </div>
                     <button onClick={()=>deleteVenue(venue.id)}>DELETE VENUE</button>
                     <img src={venue.imageUrl ? venue.imageUrl : './stock.png'} />
-                    <div>Category: <Link to={`/types/${venue.type.id}`}> {venue.type.name}</Link></div>
-                    <div>Neighborhood: <Link to={`/neighborhoods/${venue.neighborhood.id}`}> {venue.neighborhood.name}</Link></div>
+                    <div>Category: <Link to={`/type/${venue.type.id}`}> {venue.type.name}</Link></div>
+                    <div>Neighborhood: <Link to={`/neighborhood/${venue.neighborhood.id}`}> {venue.neighborhood.name}</Link></div>
                         <a href={venue.website}>Website</a>
                     
                 </div>

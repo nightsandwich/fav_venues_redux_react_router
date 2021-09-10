@@ -32,16 +32,20 @@ class _App extends Component{
               <Route component={InsertNew} path='/venues' exact />
               <Route component={NewHood} path='/neighborhoods' exact />
               <Route component={Neighborhoods} path='/neighborhoods' exact />
-              <Route component={Neighborhood} path='/neighborhoods/:id' />
+              <Route component={Neighborhood} path='/neighborhood/:id' />
               <Route component={NewType} path='/types' exact />
               <Route component={Types} path='/types' exact />
+              <Route component={Type} path='/type/:id' exact/>
+              
               <Route component={MustVisit} path='/venues/mustvisit' exact/>
               <Route component={Visited} path='/venues/visited' exact/>
-              <Route component={Type} path='/types/:id' exact/>
-              <Route component={Venue} path='/venues/:id' exact/>
-              <Route component={Notes} path='/venues/:id' exact/>
-              <Route component={EditNote} path='/venues/:id' />
-              
+              <div id='container'>
+              <Route component={Venue} path='/venue/:id' exact/>
+                <div id='notes'>
+                  <Route component={Notes} path='/venue/:id' exact/>
+                  <Route component={EditNote} path='/venue/:id' />
+                </div>
+              </div>
           </div>
         </Router>
       );

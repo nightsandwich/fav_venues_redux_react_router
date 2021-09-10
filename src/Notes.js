@@ -7,12 +7,9 @@ const Notes = (props) => {
    // console.log(notes)
     return (
     <>
-    <br></br>
-    <br></br>
-    <br></br>
-    <br></br>
+    
         <div className='notes'>
-            NOTES
+            <h3>NOTES</h3>
             <ul>
                 {
                     props.notes.map((note) => {

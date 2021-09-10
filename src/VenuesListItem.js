@@ -18,17 +18,17 @@ const VenuesListItem = ( {venues}) => {
                     return (
                             <div key={ venue.id }  className={venue.visited ? 'visited' : 'mustvisit'}>
                                 <div>
-                                    <Link to={`/venues/${venue.id}`}>
+                                    <Link to={`/venue/${venue.id}`}>
                                         { venue.name }
                                     </Link>
                                 </div>    
                                 <div >
-                                <Link to={`/venues/${venue.id}`}>
+                                <Link to={`/venue/${venue.id}`}>
                                     <img src={ venue.imageUrl ? venue.imageUrl : './stock.png'}></img>
                                 </Link>
                                 </div>
                                 <div>
-                                <Link to={`/types/${venue.type.id}`}>[{venue.type.name}</Link> in <Link to={`/neighborhoods/${venue.neighborhood.id}`}>{venue.neighborhood.name}</Link>]
+                                <Link to={`/type/${venue.type.id}`}>[{venue.type.name}</Link> in <Link to={`/neighborhoods/${venue.neighborhood.id}`}>{venue.neighborhood.name}</Link>]
                                 </div>
                             </div>
                         );

@@ -134,7 +134,7 @@ const newNote = (note, history) => {
     return async(dispatch) => {
         const created = (await axios.post('/api/notes',  note )).data;
         dispatch(_newNote(created));
-        history.push(`/venues/${venueId}`);
+        history.push(`/venue/${venueId}`);
     }
 }
 
@@ -148,7 +148,7 @@ const create = (name, neighborhoodId, typeId, website, imageUrl, history) => {
     return async(dispatch) => {
         const venue = (await axios.post('/api/venues', { name, website, imageUrl, neighborhoodId, typeId })).data;
         dispatch(_create(venue));
-        history.push(`/venues/${venue.id}`);   
+        history.push(`/venue/${venue.id}`);   
     };
 }
 const _deleteVenue = (venue) => {
@@ -174,7 +174,7 @@ const deleteNote = (id, venueId, history) => {
     return async (dispatch) => {
         const note = (await axios.delete(`/api/notes/${id}`)).data;
         dispatch(_deleteNote(note));
-        history.push(`/venues/${venueId}`);
+        history.push(`/venue/${venueId}`);
     }
 }
 const _visited = venue => {

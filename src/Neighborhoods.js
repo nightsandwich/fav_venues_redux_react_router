@@ -12,7 +12,7 @@ const _Neighborhoods = ({neighborhoods, venues}) => {
                 neighborhoods.map( neighborhood => { 
                     return (
                     <div key={ neighborhood.id } className='box'>
-                        <h3><Link to={`/neighborhoods/${neighborhood.id}`}>
+                        <h3><Link to={`/neighborhood/${neighborhood.id}`}>
                             { neighborhood.name }
                             </Link>
                         </h3>

@@ -1,5 +1,6 @@
+
 const {db} = require('./db');
-const {STRING } = db.Sequelize;
+const {STRING, BOOLEAN } = db.Sequelize;
 
 const Venue = db.define('venue', {
     name: {
@@ -13,6 +14,10 @@ const Venue = db.define('venue', {
     website: {
       type: STRING,
       defaultValue: 'https://www.yelp.com/'//need to insert
+    },
+    visited: {
+      type: BOOLEAN,
+      defaultValue: false
     }
 });
 

@@ -20,7 +20,7 @@ app.get('/', (req, res, next)=> res.sendFile(path.join(__dirname, '..', 'src', '
 
 app.use((err, req, res, next) => {
     console.error(err.stack)
-    res.status(err.status || 500).send(err.message || 'Internal server error.')
+    res.status(err.status || 500).send({error: err.errors[0].message} || 'Internal server error.')
   })
-
+  
   module.exports = app;

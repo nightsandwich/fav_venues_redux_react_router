@@ -1,6 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
-const Types = ({types, typeSelected}) => {
+const _Types = ({types, venues}) => {
     return (
         <div className='list'>
             <h1>CATEGORIES</h1>
@@ -9,9 +11,9 @@ const Types = ({types, typeSelected}) => {
                 types.map( type => { 
                     return (
                     <div key={ type.id } className='box'>
-                        <h3><a onClick={() => typeSelected(type.id)}>
+                        <h3><Link to={`/types/${type.id}`}>
                             { type.name }
-                        </a></h3>
+                        </Link></h3>
                         <div>
                             {type.venues.length} {type.venues.length === 1 ? 'Spots' : 'Spots'} 
                         </div>
@@ -23,5 +25,6 @@ const Types = ({types, typeSelected}) => {
         </div>
     );
 }
+const Types = connect(({types,venues}) => ({types, venues}))(_Types);
 
 export default Types;

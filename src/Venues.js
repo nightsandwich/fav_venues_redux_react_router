@@ -1,41 +1,18 @@
 import React from 'react';
-import InsertNew
- from './InsertNew';
-const Venues = ({venues, venueSelected, neighborhoods, types, typeSelected}) => {
+import { connect } from "react-redux";
+import { visited} from './store';
+import {Link} from 'react-router-dom';
+import VenuesListItem from './VenuesListItem';
+
+const _Venues = ( {venues}) => {
+    
     return (
     <>
-        <div id='venues-container'>
-        <h1>SPOTS</h1>
-            <div id='venue-flex'>
-                {
-                venues.map( venue => { 
-                    return (
-                            <div key={ venue.id } className='venue-info'>
-                                <div>
-                                    <a onClick={() => venueSelected(venue.id)}>
-                                        { venue.name }
-                                    </a>
-                                </div>
-                                <div>
-                                <a onClick={() => venueSelected(venue.id)}> 
-                                    <img src={ venue.imageUrl ? venue.imageUrl : './stock.png'}></img>
-                                </a>
-                                </div>
-                
-                                <div>[<a onClick={()=> typeSelected(venue.type.id)}>{venue.type.name}</a> in <a onClick={()=> handleSubmit(venue.neighborhood.id)}>{venue.neighborhood.name}</a>]</div>
-                            </div>
-                        );
-                    })
-                }
-            </div>
-        </div>
-        <div id='insert-new'>
-        {
-        <InsertNew neighborhoods={neighborhoods} types={types}/>
-        }
-        </div>
+        <VenuesListItem venues={venues}/>
     </>
     );
 }
+
+const Venues = connect(({venues}) => ({venues}))(_Venues);
 
 export default Venues;

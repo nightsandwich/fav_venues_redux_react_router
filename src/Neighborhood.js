@@ -1,34 +1,22 @@
 import React from 'react';
-//import InsertNew from './InsertNew';
+import {connect} from 'react-redux';
+import VenuesListItem from './VenuesListItem';
 
-const Neighborhood = ({selectedNeighborhood, venueSelected, types, neighborhoods}) => {
+const _Neighborhood = ({neighborhood, venues}) => {
+    if(!neighborhood.id){
+        return '...loading neighborhood'
+    }
     return (
     <>
-        <div className='list' >
-            <h1>{selectedNeighborhood.name}</h1>
-            <div >
-                {
-                selectedNeighborhood.venues.map( venue => { 
-                    return (
-                    <div key={ venue.id } className='box'>
-                        <h3><a onClick={() => venueSelected(venue.id)}>
-                            { venue.name }
-                        </a></h3>
-                        <div>
-                        </div>
-                    </div>
-                    );
-                })
-                }
-            </div>
-        </div>
+        <h1>{neighborhood.name}</h1>
+        <VenuesListItem venues={venues}/>
     </>
     );
 }
-
+const mapStateToProps = (state, otherProps) => {
+    const neighborhood = state.neighborhoods.find(neighborhood => neighborhood.id === otherProps.match.params.id * 1) || {};
+    const venues = state.venues.filter(venue => venue.neighborhood.id === otherProps.match.params.id * 1);
+    return {neighborhood, venues};
+}
+const Neighborhood = connect(mapStateToProps)(_Neighborhood);
 export default Neighborhood;
-        /*<div id='insert-new'>
-        {
-        <InsertNew neighborhoods={neighborhoods} types={types}/>
-        }
-        </div>*/

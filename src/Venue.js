@@ -1,37 +1,46 @@
 import React from 'react';
-import AddNote from './AddNote';
+import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
+import { visited, deleteVenue } from './store';
 
-const Venue = ({selectedVenue, deleteNote, addNote, neighborhoodSelected, typeSelected}) => {
+const _Venue = ({venue, deleteVenue, visited}) => {
+
+    //console.log(venue);
+    if(!venue.id) {
+        return '...loading venue';
+    }
     return (
-        <div id='venue'>
-            <div className='venue-details'>
-                <div className='details'>
-                    <h3>{selectedVenue.name}</h3>
-                    <p>Category: <a onClick={() => typeSelected(selectedVenue.type.id)}>{selectedVenue.type.name}</a></p>
-                    <p>Neighborhood: <a onClick={() => neighborhoodSelected(selectedVenue.neighborhood.id)}> {selectedVenue.neighborhood.name}</a></p>
-                    <img src={selectedVenue.imageUrl ? selectedVenue.imageUrl : './stock.png'} />
-                    <div className='website'>
-                        <a href={selectedVenue.website}>Take Me To The Website!</a>
+        <div>
+            <div >
+                <div id='venue' className={venue.visited ? 'visited' : 'mustvisit'}>
+                    <h3>{venue.name} </h3>
+                    <div>
+                        Visited? <input type="checkbox" defaultChecked={venue.visited} onClick={()=>visited(venue)}/>
                     </div>
+                    <button onClick={()=>deleteVenue(venue.id)}>DELETE VENUE</button>
+                    <img src={venue.imageUrl ? venue.imageUrl : './stock.png'} />
+                    <div>Category: <Link to={`/types/${venue.type.id}`}> {venue.type.name}</Link></div>
+                    <div>Neighborhood: <Link to={`/neighborhoods/${venue.neighborhood.id}`}> {venue.neighborhood.name}</Link></div>
+                        <a href={venue.website}>Website</a>
+                    
                 </div>
-                <br></br>
-                <br></br>
-                <div className='break'></div>
-                    {selectedVenue.notes.length ? 'NOTES' : ''}
-                <div className='break'></div>   
-                <ul className='notes'>
-                {
-                    selectedVenue.notes.map((note) => {
-                        return (
-                            <li key={note.id} className='notes'>{note.comment} <button onClick={() => deleteNote(note.id)}>X</button></li>
-                        );
-                    })
-                }
-                </ul>
-                <AddNote selectedVenue={selectedVenue} addNote={addNote}/>
             </div>
           </div>
     );
 };
+
+const Venue =  connect(
+    (state, otherProps) => {
+        //console.log(otherProps);
+        const venue = state.venues.find(venue => venue.id === otherProps.match.params.id * 1) || {};
+        return {venue};
+    },
+    (dispatch, {history}) => (
+            {
+                deleteVenue: id => dispatch(deleteVenue(id, history)),
+                visited: venue => dispatch(visited(venue, history))
+            }
+    )
+)(_Venue);
 
 export default Venue;

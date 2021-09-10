@@ -1,254 +1,39 @@
 
-
-body {
-    font-family: Tahoma;
-    background-color:  rgb(28, 167, 167);
-    
+img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
 }
-
-a:hover {
-    color: rgb(0, 102, 255);
-    background-color: rgb(217, 255, 80);
+.venue-flex{
+    display: flex;
+    flex-wrap: wrap;
 }
-/* Venues */
-    /* 
-    main-container
-        header
-        navbar
-        venues-container
-            venue-flex
-                .venue-info
-                    NAME
-                    img
-                    .website
-                    description
-        insert-new
-        footer
-    */
+.visited, .mustvisit{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 200px;
+    margin :1rem;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;
+}
+#venue{
+    height: 300px;
+}
+.visited {
+    background-color: dodgerblue;
+}
+.mustvisit {
+    background-color: gold;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
 #header{
-    text-align: center;
-}
-#main-container{
-    display: grid;
-    width: 100%;
-    height: 100vh;
-    grid-template-rows: 80px auto 60px;
-    grid-template-columns:  150px auto 200px; 
-}
-
-#header {
-    border: 1px solid black;
-    background-color: rgb(255, 238, 0);
-    grid-column: 1 / span 3;
-    grid-row: 1;
-}
-
-#navbar {
-    border: 1px solid black;
-    background-color: rgb(255, 0, 200);
-    grid-column: 1  ;
-    grid-row: 2 ;
-}
-    .nav:hover {
-        background-color: dodgerblue;
-    }
-     .nav {
-        background-color: rgb(255, 238, 0);
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-        margin-top: 1em;
-    }  
-
-#venues-container {
-    grid-column: 2 ;
-    grid-row: 2 ;
-    border: 1px solid black;   
-}
- h1 {
-    margin-left: 2em;
-}
-    #venue-flex {
-        display: flex;
-        flex-wrap: wrap;
-    }
-        .venue-info {
-            border: 2px solid black;
-            margin: .5em;
-            background-color: rgb(255, 62, 14);
-            max-height: 350px;
-            display: grid;
-            grid-template-rows: 10% 50% 20% 10%;
-        }
-        
-            .venue-info >div:first-child {
-                grid-row: 1;
-            }
-            .venue-info >div:nth-child(2){
-                grid-row: 2;
-            }
-            .venue-info >div:nth-child(3){
-                grid-row: 3;
-                margin: 1em;
-            }
-            .venue-info >div:last-child{
-                grid-row: 4;
-                
-            }
-            img {
-                max-height: 200px;   
-                border: 1px solid white;
-            }
-            .website a {
-                color: rgb(0, 47, 255);
-                text-decoration: overline underline;
-                
-            }
-            a:hover{
-                transform: scale(1.2);
-                transform: skewY(5deg);
-            }
-            .website a:hover{
-                background-color: dodgerblue;
-                color: red;
-                border: 1px solid black;
-            }
-            .notes > li {
-                list-style: none;
-                border: 1px solid black;
-                padding: .5em;
-                margin: .25em;
-            }
-            .break {
-                border-top: 2px solid black;
-            }
-           
-    
-#insert-new {
-    grid-column: 3;
-    grid-row: 2;
-    background-color: rgb(255, 0, 200);
-    border: 1px solid black;
     display: flex;
-    flex-direction: column;
-}
-    /*#insert-new-grid {
-        display: flex;
-        width: 100%;
-        height: 100vh;
-        grid-template-rows: auto auto;
-        grid-template-columns: auto auto; 
-    }
-    #dropdowns {
-        display: flex;
-        justify-content: left;
-        border: 1px solid yellow;
-        max-width: 300px;
-    }
-    #neighborhoods {
-        display: flex;
-        flex-direction: column;
-        margin: 1em;
-    }
-    #types {
-        display: flex;
-        flex-direction: column;
-        margin: 1em;
-    }
-    #types > label {
-        margin: .5em;
-    }
-    #neighborhoods > label {
-        margin: .5em;
-    }
-    .fields {
-        display: flex;
-        border: 1px solid yellow;
-        max-width: 300px;
-        align-items: center;
-        
-    }
-    .label{
-        margin: .5em;
-    }*/
-
-#footer{
-    background-color: rgb(255, 238, 0);
-    grid-column: 1 / span 3;
-    grid-row: 3;
-}
-
-/* Venue */
-    /* 
-    main-container
-        header
-        navbar
-        venue
-            .venue-info
-                NAME
-                TYPE
-                NEIGHBORHOOD
-                img
-                .website
-                NOTES
-            AddNote
-        insert-new
-        footer
-    */
-
-/*
-.venue-details {
-    align-self: center;
-}
-.notes{
-    background-color: yellow;
-}
-*/
-#venue {
-    grid-column: 2 / span 2 ;
-    grid-row: 2 ;
-    border: 1px solid black;
-    
-    text-align: center;
-}
-.venue-details {
-    display: grid;
-    grid-template-rows: repeat(3, auto);
-}
-    .venue-details > ul{
-        margin: 1em;
-        background-color: rgb(255, 62, 14);
-    }
-/* Neighborhoods */
-    /* 
-    main-container
-        header
-        navbar
-        lists
-            list
-        insert-new
-        footer
-    */
-
-
-.list {
-    display: flex;
-    flex-direction: column;
-    align-content: center;  
-}
-.list > h3 {
-    margin-top: .25em;
-}
-.box {
-    border: 1px solid black;
-    margin: 1em;
-    padding-left:.5em; 
-    padding-bottom: .25em;
-
-}
-#insert-new-grid {
-    margin-left: 1em;
-}
-#footer{
-    text-align:right;
-    margin: .5em;
+    justify-content: space-between;
 }

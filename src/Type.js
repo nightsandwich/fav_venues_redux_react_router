@@ -1,26 +1,24 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import VenuesListItem from './VenuesListItem';
 
-const Type = ({selectedType, venueSelected}) => {
+const _Type = ({type, venues}) => {
+    if(!type.id){
+        return '...loading type'
+    }
     return (
-        <div className='list' >
-            <h1>{selectedType.name}</h1>
-            <div >
-                {
-                selectedType.venues.map( venue => { 
-                    return (
-                    <div key={ venue.id } className='box' >
-                        <h3><a onClick={() => venueSelected(venue.id)}>
-                            { venue.name }
-                        </a></h3>
-                        <div>
-                        </div>
-                    </div>
-                    );
-                })
-                }
-            </div>
-        </div>
+        <>
+        <h1>{type.name}</h1>
+        <VenuesListItem venues={venues} />
+        </>
     );
 }
+const mapStateToProps = (state, otherProps) => {
+    const type = state.types.find(type => type.id === otherProps.match.params.id * 1) || {};
+    const venues = state.venues.filter(venue => venue.type.id === otherProps.match.params.id * 1)
+    return {type, venues};
+}
+const Type = connect(mapStateToProps)(_Type);
 
 export default Type;

@@ -1,6 +1,8 @@
 import React from 'react';
-//import InsertNew from './InsertNew';
-const Neighborhoods = ({neighborhoods, neighborhoodSelected, types}) => {
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+
+const _Neighborhoods = ({neighborhoods, venues}) => {
     return (
     <div className='lists'>
         <div className='list'>
@@ -10,9 +12,9 @@ const Neighborhoods = ({neighborhoods, neighborhoodSelected, types}) => {
                 neighborhoods.map( neighborhood => { 
                     return (
                     <div key={ neighborhood.id } className='box'>
-                        <h3><a onClick={() => neighborhoodSelected(neighborhood.id)}>
+                        <h3><Link to={`/neighborhoods/${neighborhood.id}`}>
                             { neighborhood.name }
-                            </a>
+                            </Link>
                         </h3>
                         <div>
                             {neighborhood.venues.length} {neighborhood.venues.length === 1 ? 'Spot' : 'Spots'} 
@@ -27,6 +29,7 @@ const Neighborhoods = ({neighborhoods, neighborhoodSelected, types}) => {
     </div>
     );
 }
+const Neighborhoods = connect(({neighborhoods,venues}) => ({neighborhoods, venues}))(_Neighborhoods);
 
 export default Neighborhoods;
        /* <div id='insert-new'>

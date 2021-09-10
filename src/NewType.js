@@ -34,7 +34,7 @@ class _NewType extends Component {
 
     render(){
         return (
-            <form>
+            <form className='singleform'>
                 <input name='name' onChange={this.onChange} value={this.state.name}/>
                 <button onClick={this.onSave}>Add Category</button>
             </form>

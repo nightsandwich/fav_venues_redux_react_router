@@ -44,25 +44,27 @@ render() {
     
     <div id='insert-new-grid'>
         {
-            <form onSubmit={ onSave }>
-                <h2>Add New Spot</h2>
-                <div className='fields'>
-                    <label className='label'>Name</label>
-                    <br></br>
-                    <input type='string' name='venueName' onChange={ onChange } value={venueName}/>
+            <form onSubmit={ onSave } className='venueform'>
+                <div className='textinput'>
+                    <h2>ADD A PLACE</h2>
+                    <div className='fields'>
+                        <label className='label'><strong>Name (Required)</strong></label>
+                        <br></br>
+                        <input type='string' name='venueName' onChange={ onChange } value={venueName}/>
+                    </div>
+                    <div className='fields'>
+                        <label className='label'>Website URL</label>
+                        <br></br>
+                        <input type='string' name='website' onChange={ onChange } value={website}/>
+                    </div>
+                    <div className='fields'>
+                        <label className='label'>Image URL</label>
+                        <br></br>
+                        <input type='string' name='imageUrl' onChange={ onChange } value={imageUrl}/>
+                    </div>
                 </div>
-                <div className='fields'>
-                    <label className='label'>Website URL</label>
-                    <br></br>
-                    <input type='string' name='website' onChange={ onChange } value={website}/>
-                </div>
-                <div className='fields'>
-                    <label className='label'>Image URL</label>
-                    <br></br>
-                    <input type='string' name='imageUrl' onChange={ onChange } value={imageUrl}/>
-                </div>
-                <br />
-                <div id='dropdowns'>
+    
+                <div className='dropdowns'>
                     <div id='neighborhoods'>
                         <label >
                             Neighborhood
@@ -98,8 +100,8 @@ render() {
                         </select>
                     </div>
                 <br />
+                <button className='submit' >ADD</button>
                 </div>
-                <button className='submit' >SAVE</button>
             </form>
         }
         <Venues />

@@ -14,7 +14,10 @@ const Notes = (props) => {
                 {
                     props.notes.map((note) => {
                         return (
-                            <li key={note.id} className='notes'>{note.comment} <button onClick={()=> props.handleDelete(note.id, note.venueId)}>X</button></li>
+                            <>
+                                <li key={note.id} className='notes'>{note.comment}</li>
+                                <button onClick={() => props.handleDelete(note.id, note.venueId)}>x</button>
+                            </>
                         );
                     })
                 }

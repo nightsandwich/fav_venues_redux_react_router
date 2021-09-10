@@ -14,14 +14,24 @@ const _Venue = ({venue, deleteVenue, visited}) => {
             <div >
                 <div id='venue' className={venue.visited ? 'visited' : 'mustvisit'}>
                     <h3>{venue.name} </h3>
-                    <div>
-                        Visited? <input type="checkbox" defaultChecked={venue.visited} onClick={()=>visited(venue)}/>
+                    <div className="info">
+                        VISITED? <input type="checkbox" defaultChecked={venue.visited} onClick={()=>visited(venue)}/>
                     </div>
                     <button onClick={()=>deleteVenue(venue.id)}>DELETE VENUE</button>
-                    <img src={venue.imageUrl ? venue.imageUrl : './stock.png'} />
-                    <div>Category: <Link to={`/type/${venue.type.id}`}> {venue.type.name}</Link></div>
-                    <div>Neighborhood: <Link to={`/neighborhood/${venue.neighborhood.id}`}> {venue.neighborhood.name}</Link></div>
-                        <a href={venue.website}>Website</a>
+                    <div className='color'>
+                        <img  src={venue.imageUrl ? venue.imageUrl : './stock.png'} />
+                    </div>
+                    <div className='wrap'>
+                        <div>
+                            <Link to={`/type/${venue.type.id}`}>#{venue.type.name.toLowerCase().split('').filter(letter => letter !== ' ').join('')}</Link>
+                        </div>
+                        <div>  
+                            <Link to={`/neighborhoods/${venue.neighborhood.id}`}>#{venue.neighborhood.name.toLowerCase().split('').filter(letter => letter !== ' ').join('')}</Link>
+                        </div>
+                        <div>  
+                            <a href={`${venue.website}`}>#website</a>
+                        </div>
+                    </div>
                     
                 </div>
             </div>

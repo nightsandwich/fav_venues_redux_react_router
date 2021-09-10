@@ -187,7 +187,7 @@ const visited = (venue, history) => {
     return async(dispatch) => {
         const updated = (await axios.put(`/api/venues/${venue.id}`, {visited: !venue.visited })).data;
         dispatch(_visited(updated));
-        //history.push(`/venues/${id}`);
+        history.push(`/venues`);
         
     }
 }

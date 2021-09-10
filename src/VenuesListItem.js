@@ -19,16 +19,24 @@ const VenuesListItem = ( {venues}) => {
                             <div key={ venue.id }  className={venue.visited ? 'visited' : 'mustvisit'}>
                                 <div>
                                     <Link to={`/venue/${venue.id}`}>
-                                        { venue.name }
+                                        <h3>{ venue.name }</h3>
                                     </Link>
                                 </div>    
-                                <div >
+                                <div className='color'>
                                 <Link to={`/venue/${venue.id}`}>
-                                    <img src={ venue.imageUrl ? venue.imageUrl : './stock.png'}></img>
+                                    <img  src={ venue.imageUrl ? venue.imageUrl : './stock.png'}></img>
                                 </Link>
                                 </div>
-                                <div>
-                                <Link to={`/type/${venue.type.id}`}>[{venue.type.name}</Link> in <Link to={`/neighborhoods/${venue.neighborhood.id}`}>{venue.neighborhood.name}</Link>]
+                                <div className='wrap'>
+                                    <div>
+                                        <Link to={`/type/${venue.type.id}`}>#{venue.type.name.toLowerCase().split('').filter(letter => letter !== ' ').join('')}</Link>
+                                    </div>
+                                    <div>  
+                                        <Link to={`/neighborhood/${venue.neighborhood.id}`}>#{venue.neighborhood.name.toLowerCase().split('').filter(letter => letter !== ' ').join('')}</Link>
+                                    </div>
+                                    <div>  
+                                        <Link to={`/venue/${venue.id}`}>#notes({venue.notes.length})</Link>
+                                    </div>
                                 </div>
                             </div>
                         );

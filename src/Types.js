@@ -5,18 +5,15 @@ import {Link} from 'react-router-dom';
 const _Types = ({types, venues}) => {
     return (
         <div className='list'>
-            <h1>CATEGORIES</h1>
+            <h2>CATEGORIES</h2>
             <div >
                 {
                 types.map( type => { 
                     return (
                     <div key={ type.id } className='box'>
                         <h3><Link to={`/type/${type.id}`}>
-                            { type.name }
+                            { type.name } ({type.venues.length})
                         </Link></h3>
-                        <div>
-                            {type.venues.length} {type.venues.length === 1 ? 'Spots' : 'Spots'} 
-                        </div>
                     </div>
                     );
                 })

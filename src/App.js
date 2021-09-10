@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Switch, HashRouter as Router, Route} from 'react-router-dom';
 import { connect} from 'react-redux';
 import {loadVenues, loadNeighborhoods, loadTypes, loadNotes } from './store';
-//import Nav from './Nav';
 import Neighborhoods from './Neighborhoods';
 import Header from './Header';
 import Footer from './Footer';
@@ -24,11 +23,11 @@ class _App extends Component{
   }
 
   render(){
-      const { view } = this.props;
       return (
         <Router>
-          <div>
+          <div className='container'>
               <Route component={Header} />
+              <Route component={InsertNew} path='/' exact/> 
               <Route component={InsertNew} path='/venues' exact />
               <Route component={NewHood} path='/neighborhoods' exact />
               <Route component={Neighborhoods} path='/neighborhoods' exact />
@@ -46,8 +45,10 @@ class _App extends Component{
                   <Route component={EditNote} path='/venue/:id' />
                 </div>
               </div>
+          <Footer />
           </div>
         </Router>
+        
       );
   }
 }

@@ -5,7 +5,10 @@ import VenuesListItem from './VenuesListItem';
 const MustVisit = ({venues}) => {
 
     return (
+        <>
+        <h2>You Should Go Here</h2>
        <VenuesListItem venues={venues}/>
+       </>
     );
 };
 

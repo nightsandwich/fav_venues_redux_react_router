@@ -33,10 +33,9 @@ class _EditNote extends Component {
             <>
             
             {
-            <form >
+            <form className='addnote'>
                 <input name="comment" value={this.state.comment} onChange={this.onChange}/>
-                <br/>
-                <button onClick={this.onSubmit}>Add Note</button>
+                <button onClick={this.onSubmit}>ADD NOTE</button>
             </form>    
             }
             

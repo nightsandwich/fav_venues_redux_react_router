@@ -38,7 +38,7 @@ const VenuesListItem = ( {venues}) => {
                                        <Link to={`/venue/${venue.id}`}>#notes({venue.notes.length})</Link>
                                     </div>
                                     <div>  
-                                       <Link to={`/venue/${venue.id}`}>#{venue.visited ? 'visited' : 'mustgothere'}</Link>
+                                       <Link to={venue.visited ? `/venues/visited` : `/venues/mustvisit`}>#{venue.visited ? 'visited' : 'mustgothere'}</Link>
                                     </div>  
                                 </div>
                             </div>

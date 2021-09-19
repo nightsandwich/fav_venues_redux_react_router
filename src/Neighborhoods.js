@@ -3,7 +3,26 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import { loadNeighborhoods } from './store';
 
+
+/*
+componentDidUpdate(prevProps){
+    if(!prevProps.todo.id && this.props.todo.id){
+      this.setState({
+        taskName: this.props.todo.taskName,
+        assignee: this.props.todo.assignee
+      })
+    }
+  }
+
+  for types too
+  */
+
+
+
 class _Neighborhoods extends Component  {
+    
+    
+    
     componentDidMount(){
         this.props.load();
     }
